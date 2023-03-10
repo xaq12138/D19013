@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="sys_clk125m_gen_sim/sys_clk125m_gen.vo" type="VERILOG" />
+ <topLevel name="sys_clk125m_gen" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

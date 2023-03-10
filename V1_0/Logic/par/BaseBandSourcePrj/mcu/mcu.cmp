@@ -1,0 +1,20 @@
+	component mcu is
+		port (
+			clk_0                         : in  std_logic                     := 'X'; -- clk
+			reset_n                       : in  std_logic                     := 'X'; -- reset_n
+			out_port_from_the_pio_addr    : out std_logic_vector(7 downto 0);         -- export
+			out_port_from_the_pio_clk     : out std_logic;                            -- export
+			out_port_from_the_pio_ctr_out : out std_logic_vector(7 downto 0);         -- export
+			out_port_from_the_pio_data    : out std_logic_vector(31 downto 0);        -- export
+			out_port_from_the_pio_reset   : out std_logic;                            -- export
+			out_port_from_the_pio_spi_clk : out std_logic;                            -- export
+			in_port_to_the_pio_spi_di     : in  std_logic                     := 'X'; -- export
+			out_port_from_the_pio_spi_do  : out std_logic;                            -- export
+			out_port_from_the_pio_spi_le  : out std_logic;                            -- export
+			rxd_to_the_uart_0             : in  std_logic                     := 'X'; -- rxd
+			txd_from_the_uart_0           : out std_logic;                            -- txd
+			rxd_to_the_uart               : in  std_logic                     := 'X'; -- rxd
+			txd_from_the_uart             : out std_logic                             -- txd
+		);
+	end component mcu;
+

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<instance entity-name="altera_fir_compiler_ii" version="14.1" >
+<generic name="filterType" value="single" />
+<generic name="interpFactor" value="1" />
+<generic name="decimFactor" value="1" />
+<generic name="symmetryMode" value="nsym" />
+<generic name="L_bandsFilter" value="1" />
+<generic name="inputChannelNum" value="1" />
+<generic name="clockRate" value="8" />
+<generic name="clockSlack" value="0" />
+<generic name="inputRate" value="8" />
+<generic name="coeffReload" value="false" />
+<generic name="baseAddress" value="0" />
+<generic name="readWriteMode" value="read_write" />
+<generic name="backPressure" value="false" />
+<generic name="deviceFamily" value="Cyclone V" />
+<generic name="speedGrade" value="medium" />
+<generic name="delayRAMBlockThreshold" value="20" />
+<generic name="dualMemDistRAMThreshold" value="1280" />
+<generic name="mRAMThreshold" value="1000000" />
+<generic name="hardMultiplierThreshold" value="-1" />
+<generic name="inputType" value="int" />
+<generic name="inputBitWidth" value="12" />
+<generic name="inputFracBitWidth" value="0" />
+<generic name="coeffSetRealValue" value="-0.0011164655,-0.0015795482,-0.0016629525,-8.8064028E-4,0.0012385176,0.0045151293,0.0076289908,0.0082727562,0.0041615202,-0.005402935,-0.018176915,-0.028708987,-0.029674867,-0.014586911,0.019111969,0.067947361,0.12243984,0.16956699,0.19690714,0.19690714,0.16956699,0.12243984,0.067947361,0.019111969,-0.014586911,-0.029674867,-0.028708987,-0.018176915,-0.005402935,0.0041615202,0.0082727562,0.0076289908,0.0045151293,0.0012385176,-8.8064028E-4,-0.0016629525,-0.0015795482,-0.0011164655" />
+<generic name="coeffScaling" value="auto" />
+<generic name="coeffType" value="int" />
+<generic name="coeffBitWidth" value="9" />
+<generic name="coeffFracBitWidth" value="0" />
+<generic name="outType" value="int" />
+<generic name="outMSBRound" value="trunc" />
+<generic name="outMsbBitRem" value="0" />
+<generic name="outLSBRound" value="trunc" />
+<generic name="outLsbBitRem" value="0" />
+<generic name="bankCount" value="1" />
+<generic name="bankDisplay" value="0" />
+</instance>

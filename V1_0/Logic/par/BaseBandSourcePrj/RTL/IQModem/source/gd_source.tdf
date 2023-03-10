@@ -1,0 +1,230 @@
+FUNCTION lpm_counter (data[LPM_WIDTH-1..0], clock, clk_en, cnt_en, updown, cin, aclr, aset, aconst, aload, sclr, sset, sconst, sload)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_MODULUS, LPM_AVALUE, LPM_SVALUE, CARRY_CNT_EN, LABWIDE_SCLR)
+   RETURNS (q[LPM_WIDTH-1..0], cout, eq[15..0]);
+FUNCTION lpm_shiftreg (data[LPM_WIDTH-1..0], clock, enable, shiftin, load, sclr, sset, aclr, aset)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION lpm_mux (data[LPM_SIZE-1..0][LPM_WIDTH-1..0], sel[LPM_WIDTHS-1..0], clock, aclr) 
+   WITH (LPM_WIDTH, LPM_SIZE, LPM_WIDTHS, LPM_PIPELINE)
+   RETURNS (result[LPM_WIDTH-1..0]);
+FUNCTION lpm_compare (dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], clock, aclr)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_PIPELINE, CHAIN_SIZE, ONE_INPUT_IS_CONSTANT)
+   RETURNS (alb, aeb, agb, ageb, aneb, aleb);
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], add_sub, clock, aclr, clkn)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ONE_INPUT_IS_CONSTANT, LPM_PIPELINE, MAXIMIZE_SPEED)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+--FUNCTION nco_s (phi_inc_i[31..0], clk, reset_n, clken,phase_mod_i[15..0],freq_mod_i[31..0])
+--	RETURNS (fsin_o[13..0], fcos_o[13..0], out_valid);
+FUNCTION IQModemNCO (phi_inc_i[31..0], clk, reset_n, clken,phase_mod_i[15..0],freq_mod_i[31..0])
+	RETURNS (fsin_o[15..0], fcos_o[15..0], out_valid);
+
+FUNCTION acc32(clock,data[31..0])
+   RETURNS (result[31..0]);
+FUNCTION rom_63b (address[5..0], clock)
+	RETURNS (q[0..0]);
+SUBDESIGN gd_source
+(
+	clk_sys					: INPUT;
+	reset_n					: INPUT;
+	pcm_nco_i[31..0]		: INPUT;
+	bd_i						: OUTPUT;
+	bs							: OUTPUT;
+)
+VARIABLE
+	nco						: IQModemNCO;--nco_s;
+	bit_cont					: lpm_counter with (lpm_width=4);
+	w_cont					: lpm_counter with (lpm_width=14);
+	w_add_cont				: lpm_counter with (lpm_width=14);
+	f_cont					: lpm_counter with (lpm_width=32);
+	f_bit_cont				: lpm_counter with (lpm_width=6);
+	add_f_cont_l[14..0]	:NODE;
+	add_f_cont_h[14..0]	:NODE;
+	tj_ini[15..0]			:NODE;
+	buf_f_code[47..0]		:NODE;
+	f_lth[15..0]			:NODE;
+	w_lth[3..0]				:NODE;
+	f_code_lth[5..0]		:NODE;
+	buf_tj_step[11..0]	:NODE;
+	f_code_c_e				:DFFe;
+	f_syn_p					:DFFe;
+	bd_b						:DFFe;
+	b_out_as					:DFFe;
+	tj_out[15..0]			:NODE;
+	f_cont_l[15..0]		:NODE;
+	f_cont_h[15..0]		:NODE;
+	tj_latch[15..0]		:DFFE;
+	f_code_s[47..0]		:node;
+	tj_step[15..0]			:node;
+	f_syn						:node;
+	w_syn						:node;
+	f_code_d					:node;
+	oe_fc_l					:node;
+	oe_fc_h					:node;
+	oe_tj						:node;
+	a_f_cont_a_l			:NODE;
+	a_f_cont_a_h			:NODE;
+	f_cont_a_l				:NODE;
+	f_cont_a_h				:NODE;
+	f_code_equ				:NODE;
+	ppi[15..0]				:NODE;
+	p_to_s[15..0]			:NODE;
+	s_p_o						:NODE;
+	bit_syn_ena				:node;
+	bit_syn					:dffe;
+	buf_bit_syn				:dffe;
+	sj_dff[7..0]			:DFFE;
+	sj_data					:node;
+	ppp[15..0]				:node;
+	sj_out[15..0]			:NODE;
+	
+BEGIN
+%---------initial-----------%
+	nco.phi_inc_i[31..0]		=pcm_nco_i[31..0];	
+	nco.clk						=clk_sys;
+	nco.reset_n					=reset_n;
+	nco.clken					=VCC;
+	nco.phase_mod_i[15..0]	=GND;--phase_mod_i[15..0];
+	nco.freq_mod_i[31..0]	=GND;--freq_mod_i[31..0];
+	
+	bit_syn=nco.fsin_o[15];--nco.fsin_o[13];
+	bit_syn.ena=nco.out_valid;
+	bit_syn.clk=clk_sys;
+
+	buf_bit_syn=bit_syn;
+	buf_bit_syn.clk=clk_sys;
+	bit_syn_ena=bit_syn and !buf_bit_syn;
+	
+	w_lth[3..0]=7;
+
+	buf_f_code[15..0]=H"eb90";
+	buf_f_code[47..16]=0;
+
+	f_lth[15..0]=H"0007";--
+
+	buf_tj_step[11..0]=0;
+
+	oe_tj=gnd;
+
+	tj_ini[15..0]=H"55";
+
+	add_f_cont_l[14..0]=1;
+
+	add_f_cont_h[14..0]=0;
+
+	f_code_lth[5..0]=15;
+	
+%----------frame code-------%
+	(f_code_s[47..0],)=lpm_shiftreg (buf_f_code[47..0],clk_sys, bit_syn_ena , , f_syn, , , , )
+				   WITH (LPM_WIDTH=48);
+	f_code_d=lpm_mux (f_code_s[47..0], f_code_lth[5..0],,) 
+ 				  WITH (LPM_WIDTH=1, LPM_SIZE=48,LPM_WIDTHS=6);
+%---------tj code-----------%
+	tj_step[15..12]=GND;
+	tj_step[11..0]=buf_tj_step[11..0];
+
+	f_syn_p=f_syn;
+	f_syn_p.ena=bit_syn_ena;
+	f_syn_p.clk=clk_sys;
+
+	(tj_latch[15..0],,)=lpm_add_sub (GND,tj_step[15..0],tj_latch[15..0],VCC,,,)
+   						WITH (LPM_WIDTH=16,
+							  LPM_REPRESENTATION="UNSIGNED");
+	tj_latch[15..0].clrn=!f_syn_p or tj_ini[15..0];
+	tj_latch[15..0].prn=!f_syn_p or !tj_ini[15..0];
+	tj_latch[].clk=clk_sys;
+	tj_latch[].ena=w_syn and bit_syn_ena;
+	tj_out[15..0]=tj_latch[15..0];
+%---------sj code-----------%
+%---------sj code-----------%
+	sj_dff[7]=sj_data;
+	sj_data=sj_dff[7] xor (sj_dff[5]  xor (sj_dff[3] xor sj_dff[0]));
+	sj_dff[6..0]=sj_dff[7..1];
+	sj_dff[].ena=bit_syn_ena;
+	sj_dff[].clk=clk_sys;
+	sj_dff[].prn=!f_syn_p;
+	ppp[15..0]=GND;
+
+	(sj_out[15..0],)=lpm_shiftreg (ppp[15..0],clk_sys,bit_syn_ena,sj_data,,,,,)
+			   WITH (LPM_WIDTH=16);
+%--------frame count-------%
+--	f_cont.clock=f_syn_p;
+	
+	f_cont.clock=clk_sys;
+	f_cont.clk_en= bit_syn_ena and  w_syn and f_syn_p;
+	
+	if w_lth[3..0]>7 then 
+							f_cont_l[15..0]=f_cont.q[15..0];
+							f_cont_h[15..0]=f_cont.q[31..16];
+			else f_cont_l[7..0]=f_cont.q[7..0];
+				f_cont_h[7..0]=f_cont.q[15..8];
+				f_cont_l[15..8]=GND;
+				f_cont_h[15..8]=GND;
+	end if;
+%--------sin-------%
+%--------jt code-------%
+%--------f--frame count-------%
+%---------contral--------%
+	bit_cont.clk_en=bit_syn_ena;
+	bit_cont.clock=clk_sys;
+	(,w_syn,,,,)=lpm_compare (bit_cont.q[3..0],w_lth[3..0],,)
+				   WITH (LPM_WIDTH=4);
+	bit_cont.sclr=w_syn;
+
+	w_cont.clock=clk_sys;
+	w_cont.clk_en=bit_syn_ena;
+	w_cont.cnt_en=w_syn;
+	w_cont.sclr=f_syn and w_syn;
+	(,,,f_syn,,)=lpm_compare (w_cont.q[13..0],f_lth[13..0],,)
+				   WITH (LPM_WIDTH=14);
+
+	f_bit_cont.clock=clk_sys;
+	f_bit_cont.clk_en=bit_syn_ena;
+	f_bit_cont.cnt_en=f_code_c_e;
+	f_bit_cont.sclr=f_syn and w_syn;
+	(,f_code_equ,,,,)=lpm_compare (f_bit_cont.q[5..0],f_code_lth[5..0],,)
+				   WITH (LPM_WIDTH=6);
+	f_code_c_e.clk=clk_sys;
+	f_code_c_e.ena=bit_syn_ena;
+	f_code_c_e=(f_syn and w_syn) or (!f_code_equ and f_code_c_e);
+
+	w_add_cont.clk_en=bit_syn_ena;
+	w_add_cont.clock=clk_sys;
+	w_add_cont.cnt_en=w_syn;
+	w_add_cont.sclr=f_code_c_e and !w_syn;
+
+
+	(,a_f_cont_a_l,,,,)=lpm_compare (w_add_cont.q[13..0],add_f_cont_l[13..0],,)
+				 	  WITH (LPM_WIDTH=14);
+	(,a_f_cont_a_h,,,,)=lpm_compare (w_add_cont.q[13..0],add_f_cont_h[13..0],,)
+				 	  WITH (LPM_WIDTH=14);
+
+	f_cont_a_l=a_f_cont_a_l and !add_f_cont_l[14];
+	f_cont_a_h=a_f_cont_a_h and !add_f_cont_h[14];
+
+	oe_fc_l=f_cont_a_l;
+	oe_fc_h=!f_cont_a_l and f_cont_a_h;
+
+	ppi[]=(f_cont_l[] and oe_fc_l) or (f_cont_h[] and oe_fc_h)
+		or (((sj_out[] and !oe_tj) or (tj_out[] and oe_tj)) and (!oe_fc_l and !oe_fc_h));
+
+	(p_to_s[15..0],)=lpm_shiftreg (ppi[15..0],clk_sys,bit_syn_ena , , w_syn, , , , )
+				   WITH (LPM_WIDTH=16);
+	s_p_o=lpm_mux (p_to_s[15..0],w_lth[3..0],,) 
+ 				  WITH (LPM_WIDTH=1, LPM_SIZE=16,LPM_WIDTHS=4);
+%--------output------%
+	if f_code_c_e==1 then b_out_as=f_code_d;
+		else b_out_as=s_p_o;
+	end if;
+	b_out_as.ena=bit_syn_ena;
+	b_out_as.clk=clk_sys;
+---output source selete----
+	bd_b=b_out_as;
+	bd_b.clk=clk_sys;
+-------qpsk----
+	bd_i=bd_b;
+	bs=bit_syn;	
+END;
+

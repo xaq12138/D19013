@@ -1,0 +1,81 @@
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_TOOL_NAME "altera_fir_compiler_ii"
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_TOOL_VERSION "14.1"
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_TOOL_ENV "mwpim"
+set_global_assignment -library "FIR1M_LP" -name MISC_FILE [file join $::quartus(qip_path) "FIR1M_LP.cmp"]
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_TARGETED_DEVICE_FAMILY "Cyclone V"
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone V}"
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_QSYS_MODE "UNKNOWN"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_COMPONENT_NAME "RklSMU1fTFA="
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_COMPONENT_DISPLAY_NAME "RklSIElJ"
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_COMPONENT_VERSION "MTQuMQ=="
+set_global_assignment -entity "FIR1M_LP" -library "FIR1M_LP" -name IP_COMPONENT_DESCRIPTION "QWx0ZXJhIEZJUiBJSQ=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_NAME "RklSMU1fTFBfMDAwMg=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_DISPLAY_NAME "RklSIElJ"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_VERSION "MTQuMQ=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_DESCRIPTION "QWx0ZXJhIEZJUiBJSQ=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "ZmlsdGVyVHlwZQ==::c2luZ2xl::RmlsdGVyIFR5cGU="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "aW50ZXJwRmFjdG9y::MQ==::SW50ZXJwb2xhdGlvbiBGYWN0b3I="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "ZGVjaW1GYWN0b3I=::MQ==::RGVjaW1hdGlvbiBGYWN0b3I="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "c3ltbWV0cnlNb2Rl::bnN5bQ==::U3ltbWV0cnk="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "TF9iYW5kc0ZpbHRlcg==::MQ==::TC10aCBCYW5kIEZpbHRlcg=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "aW5wdXRDaGFubmVsTnVt::MQ==::TnVtYmVyIG9mIENoYW5uZWxz"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y2xvY2tSYXRl::OA==::Q2xvY2sgUmF0ZQ=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y2xvY2tTbGFjaw==::MA==::Q2xvY2sgU2xhY2s="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "aW5wdXRSYXRl::OA==::SW5wdXQgU2FtcGxlIFJhdGUgKE1TUFMp"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y29lZmZSZWxvYWQ=::ZmFsc2U=::Q29lZmZpY2llbnRzIFJlbG9hZA=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "YmFja1ByZXNzdXJl::ZmFsc2U=::QmFjayBQcmVzc3VyZSBTdXBwb3J0"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "ZGV2aWNlRmFtaWx5::Q3ljbG9uZSBW::RGV2aWNlIEZhbWlseQ=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "c3BlZWRHcmFkZQ==::bWVkaXVt::U3BlZWQgR3JhZGU="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "ZGVsYXlSQU1CbG9ja1RocmVzaG9sZA==::MjA=::Q0RlbGF5IFJBTSBCbG9jayBUaHJlc2hvbGQ="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "ZHVhbE1lbURpc3RSQU1UaHJlc2hvbGQ=::MTI4MA==::Q0R1YWwgTWVtIERpc3QgUkFNIFRocmVzaG9sZA=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "bVJBTVRocmVzaG9sZA==::MTAwMDAwMA==::TS1SQU0gVGhyZXNob2xk"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "aGFyZE11bHRpcGxpZXJUaHJlc2hvbGQ=::LTE=::SGFyZCBNdWx0aXBsaWVyIFRocmVzaG9sZA=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "aW5wdXRUeXBl::aW50::SW5wdXQgVHlwZQ=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "aW5wdXRCaXRXaWR0aA==::MTI=::SW5wdXQgQml0IFdpZHRo"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRSZWFsVmFsdWU=::LTAuMDAxMTE2NDY1NSwtMC4wMDE1Nzk1NDgyLC0wLjAwMTY2Mjk1MjUsLTguODA2NDAyOEUtNCwwLjAwMTIzODUxNzYsMC4wMDQ1MTUxMjkzLDAuMDA3NjI4OTkwOCwwLjAwODI3Mjc1NjIsMC4wMDQxNjE1MjAyLC0wLjAwNTQwMjkzNSwtMC4wMTgxNzY5MTUsLTAuMDI4NzA4OTg3LC0wLjAyOTY3NDg2NywtMC4wMTQ1ODY5MTEsMC4wMTkxMTE5NjksMC4wNjc5NDczNjEsMC4xMjI0Mzk4NCwwLjE2OTU2Njk5LDAuMTk2OTA3MTQsMC4xOTY5MDcxNCwwLjE2OTU2Njk5LDAuMTIyNDM5ODQsMC4wNjc5NDczNjEsMC4wMTkxMTE5NjksLTAuMDE0NTg2OTExLC0wLjAyOTY3NDg2NywtMC4wMjg3MDg5ODcsLTAuMDE4MTc2OTE1LC0wLjAwNTQwMjkzNSwwLjAwNDE2MTUyMDIsMC4wMDgyNzI3NTYyLDAuMDA3NjI4OTkwOCwwLjAwNDUxNTEyOTMsMC4wMDEyMzg1MTc2LC04LjgwNjQwMjhFLTQsLTAuMDAxNjYyOTUyNSwtMC4wMDE1Nzk1NDgyLC0wLjAwMTExNjQ2NTU=::UmVhbCBDb2VmZmljaWVudCBWYWx1ZXM="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y29lZmZOdW0=::Mzg=::TnVtYmVyIG9mIENvZWZmaWNpZW50cw=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRTY2FsZVZhbHVl::LTAuMDAwNzcyMTg0ODYyNzQ1MDk4MSwtMC4wMDE1NDQzNjk3MjU0OTAxOTYyLC0wLjAwMTU0NDM2OTcyNTQ5MDE5NjIsLTAuMDAwNzcyMTg0ODYyNzQ1MDk4MSwwLjAwMDc3MjE4NDg2Mjc0NTA5ODEsMC4wMDM4NjA5MjQzMTM3MjU0OTA0LDAuMDA2OTQ5NjYzNzY0NzA1ODgzLDAuMDA3NzIxODQ4NjI3NDUwOTgxLDAuMDAzODYwOTI0MzEzNzI1NDkwNCwtMC4wMDQ2MzMxMDkxNzY0NzA1ODksLTAuMDE3NzYwMjUxODQzMTM3MjU2LC0wLjAyODU3MDgzOTkyMTU2ODYzLC0wLjAyOTM0MzAyNDc4NDMxMzcyNywtMC4wMTM4OTkzMjc1Mjk0MTE3NjYsMC4wMTg1MzI0MzY3MDU4ODIzNTUsMC4wNjcxODAwODMwNTg4MjM1MywwLjEyMjAwNTIwODMxMzcyNTUxLDAuMTY5MTA4NDg0OTQxMTc2NSwwLjE5NjEzNDk1NTEzNzI1NDkzLDAuMTk2MTM0OTU1MTM3MjU0OTMsMC4xNjkxMDg0ODQ5NDExNzY1LDAuMTIyMDA1MjA4MzEzNzI1NTEsMC4wNjcxODAwODMwNTg4MjM1MywwLjAxODUzMjQzNjcwNTg4MjM1NSwtMC4wMTM4OTkzMjc1Mjk0MTE3NjYsLTAuMDI5MzQzMDI0Nzg0MzEzNzI3LC0wLjAyODU3MDgzOTkyMTU2ODYzLC0wLjAxNzc2MDI1MTg0MzEzNzI1NiwtMC4wMDQ2MzMxMDkxNzY0NzA1ODksMC4wMDM4NjA5MjQzMTM3MjU0OTA0LDAuMDA3NzIxODQ4NjI3NDUwOTgxLDAuMDA2OTQ5NjYzNzY0NzA1ODgzLDAuMDAzODYwOTI0MzEzNzI1NDkwNCwwLjAwMDc3MjE4NDg2Mjc0NTA5ODEsLTAuMDAwNzcyMTg0ODYyNzQ1MDk4MSwtMC4wMDE1NDQzNjk3MjU0OTAxOTYyLC0wLjAwMTU0NDM2OTcyNTQ5MDE5NjIsLTAuMDAwNzcyMTg0ODYyNzQ1MDk4MQ==::U2NhbGVkIENvZWZmaWNpZW50IFZhbHVlcw=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRGaXhlZFZhbHVl::LTEsLTIsLTIsLTEsMSw1LDksMTAsNSwtNiwtMjMsLTM3LC0zOCwtMTgsMjQsODcsMTU4LDIxOSwyNTQsMjU0LDIxOSwxNTgsODcsMjQsLTE4LC0zOCwtMzcsLTIzLC02LDUsMTAsOSw1LDEsLTEsLTIsLTIsLTE=::Rml4ZWQtcG9pbnQgQ29lZmZpY2llbnQgVmFsdWVz"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y29lZmZTY2FsaW5n::YXV0bw==::Q29lZmZpY2llbnQgU2NhbGluZw=="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y29lZmZUeXBl::aW50::Q29lZmZpY2llbnQgRGF0YSBUeXBl"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y29lZmZCaXRXaWR0aA==::OQ==::Q29lZmZpY2llbnQgQml0IFdpZHRo"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "b3V0VHlwZQ==::aW50::T3V0cHV0IFR5cGU="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "b3V0TVNCUm91bmQ=::dHJ1bmM=::TVNCIFJvdW5kaW5n"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "b3V0TXNiQml0UmVt::MA==::TVNCIEJpdHMgdG8gUmVtb3Zl"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "b3V0TFNCUm91bmQ=::dHJ1bmM=::TFNCIFJvdW5kaW5n"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "b3V0THNiQml0UmVt::MA==::TFNCIEJpdHMgdG8gUmVtb3Zl"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "aW5wdXRJbnRlcmZhY2VOdW0=::MQ==::TnVtYmVyIG9mIFBhcmFsbGVsIElucHV0IFN5bWJvbHM="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "b3V0cHV0SW50ZXJmYWNlTnVt::MQ==::TnVtYmVyIG9mIFBhcmFsbGVsIE91dHB1dCBTeW1ib2xz"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y2hhblBlcklucHV0SW50ZXJmYWNl::MQ==::TnVtYmVyIG9mIENoYW5uZWxzIHBlciBJbnB1dCBJbnRlcmZhY2U="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "Y2hhblBlck91dHB1dEludGVyZmFjZQ==::MQ==::TnVtYmVyIG9mIENoYW5uZWxzIHBlciBPdXRwdXQgSW50ZXJmYWNl"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "YmFua0NvdW50::MQ==::TnVtYmVyIG9mIENvZWZmaWNpZW50IEJhbmtz"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "YmFua0Rpc3BsYXk=::MA==::YmFua0Rpc3BsYXk="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "bHV0Q291bnQ=::NzA=::TnVtYmVyIG9mIExVVHM="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "ZHNwQ291bnQ=::Mzg=::TnVtYmVyIG9mIERTUHM="
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "bWVtQml0Q291bnQ=::MA==::TnVtYmVyIG9mIE1lbW9yeSBCaXRz"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_COMPONENT_PARAMETER "ZXJyb3JMaXN0::MA==::ZXJyb3JMaXN0"
+
+set_global_assignment -library "FIR1M_LP" -name VERILOG_FILE [file join $::quartus(qip_path) "FIR1M_LP.v"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/dspba_library_package.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/dspba_library.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VERILOG_FILE [file join $::quartus(qip_path) "FIR1M_LP/altera_avalon_sc_fifo.v"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/auk_dspip_math_pkg_hpfir.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/auk_dspip_lib_pkg_hpfir.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/auk_dspip_avalon_streaming_controller_hpfir.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/auk_dspip_avalon_streaming_sink_hpfir.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/auk_dspip_avalon_streaming_source_hpfir.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/auk_dspip_roundsat_hpfir.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/FIR1M_LP_0002_rtl.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/FIR1M_LP_0002_ast.vhd"]
+set_global_assignment -library "FIR1M_LP" -name VHDL_FILE [file join $::quartus(qip_path) "FIR1M_LP/FIR1M_LP_0002.vhd"]
+
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_TOOL_NAME "altera_fir_compiler_ii"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_TOOL_VERSION "14.1"
+set_global_assignment -entity "FIR1M_LP_0002" -library "FIR1M_LP" -name IP_TOOL_ENV "mwpim"

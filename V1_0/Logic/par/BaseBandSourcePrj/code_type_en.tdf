@@ -1,0 +1,90 @@
+FUNCTION lpm_counter (data[LPM_WIDTH-1..0], clock, clk_en, cnt_en, updown, cin, aclr, aset, aconst, aload, sclr, sset, sconst, sload)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_MODULUS, LPM_AVALUE, LPM_SVALUE, CARRY_CNT_EN, LABWIDE_SCLR)
+   RETURNS (q[LPM_WIDTH-1..0], cout, eq[15..0]);
+FUNCTION lpm_shiftreg (data[LPM_WIDTH-1..0], clock, enable, shiftin, load, sclr, sset, aclr, aset)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION lpm_mux (data[LPM_SIZE-1..0][LPM_WIDTH-1..0], sel[LPM_WIDTHS-1..0], clock, aclr) 
+   WITH (LPM_WIDTH, LPM_SIZE, LPM_WIDTHS, LPM_PIPELINE)
+   RETURNS (result[LPM_WIDTH-1..0]);
+FUNCTION lpm_compare (dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], clock, aclr)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_PIPELINE, CHAIN_SIZE, ONE_INPUT_IS_CONSTANT)
+   RETURNS (alb, aeb, agb, ageb, aneb, aleb);
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], add_sub, clock, aclr, clkn)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ONE_INPUT_IS_CONSTANT, LPM_PIPELINE, MAXIMIZE_SPEED)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION lpm_rom (address[LPM_WIDTHAD-1..0], inclock, outclock, memenab)
+	WITH (LPM_WIDTH, LPM_WIDTHAD, LPM_NUMWORDS, LPM_FILE, LPM_ADDRESS_CONTROL, LPM_OUTDATA)
+	RETURNS (q[LPM_WIDTH-1..0]);
+FUNCTION acc32(clock,data[31..0])
+   RETURNS (result[31..0]);
+FUNCTION r_source(clk_sys,lclk,w_lth[4..0],bit_syn,mofei_data[31..0],mofei_addr[15..0],mofei_en,mofei_rden)
+	RETURNS (bd_out,fifo_usdw[13..0]);
+
+SUBDESIGN code_type_en
+(
+	clk_sys						: INPUT;
+	pcm_type[3..0]				:input;
+	bit_syn						:input;
+	bd_in							:input;
+	bd_out						: outPUT;
+)
+VARIABLE
+	
+	nrz_to_rnrz		:lpm_shiftreg WITH (LPM_WIDTH=15);
+	bi_fi				: dffe;
+	bd_b				:DFFe;
+	rnrz				:node;
+	nrz				:node;
+	nrz_l				:node;
+	l_to_ms			:dffe;
+	buf_bit_syn		:dff;
+	bit_syn_ena		:node;
+	a_bit_syn		:node;
+	
+	bd_in_t			:dffe;
+	
+	
+BEGIN
+	buf_bit_syn=bit_syn;
+	buf_bit_syn.clk=clk_sys;
+	bit_syn_ena=bit_syn and !buf_bit_syn;
+	
+	a_bit_syn=!bit_syn and buf_bit_syn;
+	
+	bd_in_t=bd_in;
+	bd_in_t.ena=bit_syn_ena;	
+	bd_in_t.clk=clk_sys;	
+	
+	rnrz=bd_in_t xor (nrz_to_rnrz.q[13] xor nrz_to_rnrz.q[14]);
+	nrz_to_rnrz.enable=bit_syn_ena;
+	nrz_to_rnrz.clock=clk_sys;
+	nrz_to_rnrz.shiftin=rnrz;
+
+	if pcm_type[3]==1 then nrz_l=rnrz;
+		else nrz_l=bd_in_t;
+	end if;
+
+	l_to_ms.clk=clk_sys;
+	l_to_ms.ena=(nrz_l xor (!pcm_type[3] and pcm_type[0])) and bit_syn_ena ;
+	l_to_ms.d=!l_to_ms.q;
+
+	if (!pcm_type[3] and pcm_type[1])==1 then nrz=l_to_ms;
+		else nrz=nrz_l;
+	end if;
+
+	bi_fi.clk=clk_sys;
+	bi_fi.ena=a_bit_syn or bit_syn_ena;
+	bi_fi=(nrz and bit_syn_ena) or (!nrz and a_bit_syn);
+
+	if (!pcm_type[3] and pcm_type[2])==1 then bd_b=bi_fi;
+		else bd_b=nrz;
+	end if;
+
+	bd_b.clk=clk_sys;
+	bd_out=bd_b;
+END;
+

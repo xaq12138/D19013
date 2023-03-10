@@ -1,0 +1,77 @@
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_TOOL_NAME "Qsys"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_TOOL_VERSION "14.1"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -library "nco_if_mixer" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../nco_if_mixer.sopcinfo"]
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name SLD_INFO "QSYS_NAME nco_if_mixer HAS_SOPCINFO 1 GENERATION_ID 1500020212"
+set_global_assignment -library "nco_if_mixer" -name MISC_FILE [file join $::quartus(qip_path) "../nco_if_mixer.cmp"]
+set_global_assignment -library "nco_if_mixer" -name SLD_FILE [file join $::quartus(qip_path) "nco_if_mixer.debuginfo"]
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_TARGETED_DEVICE_FAMILY "Cyclone V"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone V}"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "nco_if_mixer" -name MISC_FILE [file join $::quartus(qip_path) "../../nco_if_mixer.qsys"]
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_NAME "bmNvX2lmX21peGVy"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_DISPLAY_NAME "bmNvX2lmX21peGVy"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTUwMDAyMDIxMg==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNFRkE5RjIzSTc=::QXV0byBERVZJQ0U="
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfRE9NQUlO::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "nco_if_mixer" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfUkVTRVRfRE9NQUlO::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_NAME "bmNvX2lmX21peGVyX25jb19paV8w"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_DISPLAY_NAME "TkNP"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_VERSION "MTQuMQ=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_DESCRIPTION "QWx0ZXJhIE51bWVyaWNhbGx5IENvbnRyb2xsZWQgT3NjaWxsYXRvcg=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "ZGVzaWduX2Vudg==::TkFUSVZF::ZGVzaWduX2Vudg=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "YXJjaA==::bGFyZ2Vfcm9t::R2VuZXJhdGlvbiBBbGdvcml0aG0="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "d2FudF9zaW5fYW5kX2Nvcw==::ZHVhbF9vdXRwdXQ=::T3V0cHV0cw=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "bnVtY2g=::MQ==::TnVtYmVyIG9mIENoYW5uZWxz"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "bnVtYmE=::MQ==::TnVtYmVyIG9mIEJhbmRz"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "c2VsZWN0ZWRfZGV2aWNlX2ZhbWlseQ==::Q3ljbG9uZSBW::RGV2aWNlIEZhbWlseQ=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "YXBy::MzI=::UGhhc2UgQWNjdW11bGF0b3IgUHJlY2lzaW9u"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "YXByaQ==::MTY=::QW5ndWxhciBSZXNvbHV0aW9u"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "bXBy::MTA=::TWFnbml0dWRlIFJlc29sdXRpb24="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "Y29yZGljX2FyY2g=::cGFyYWxsZWw=::Q09SRElDIEFyY2hpdGVjdHVyZQ=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "dHJpZ19jeWNsZXNfcGVyX291dHB1dA==::MQ==::Q2xvY2sgY3ljbGVzIHBlciBvdXRwdXQ="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "Y3ljbGVzX3Blcl9vdXRwdXQ=::MQ==::Q2xvY2sgY3ljbGVzIHBlciBvdXRwdXQ="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "d2FudF9kaXRoZXI=::dHJ1ZQ==::SW1wbGVtZW50IFBoYXNlIERpdGhlcmluZw=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "ZHByaQ==::NA==::RGl0aGVyIExldmVs"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "ZnNhbXA=::NjAuMA==::Q2xvY2sgUmF0ZQ=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "ZnJlcV9vdXQ=::MS4w::RGVzaXJlZCBPdXRwdXQgRnJlcXVlbmN5"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "cGhpX2luYw==::NzE1ODI3ODg=::UGhhc2UgSW5jcmVtZW50IFZhbHVl"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "cmVhbF9mcmVxX291dA==::MS4w::UmVhbCBPdXRwdXQgRnJlcXVlbmN5"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "d2FudF9mcmVxX21vZA==::dHJ1ZQ==::RnJlcXVlbmN5IE1vZHVsYXRpb24gSW5wdXQ="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "YXByZg==::MzI=::TW9kdWxhdG9yIFJlc29sdXRpb24="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "Zm1vZF9waXBl::MQ==::TW9kdWxhdG9yIFBpcGVsaW5lIExldmVs"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "d2FudF9waGFzZV9tb2Q=::dHJ1ZQ==::UGhhc2UgTW9kdWxhdGlvbiBJbnB1dA=="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "YXBycA==::MzI=::TW9kdWxhdG9yIFJlc29sdXRpb24="
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_COMPONENT_PARAMETER "cG1vZF9waXBl::MQ==::TW9kdWxhdG9yIFBpcGVsaW5lIExldmVs"
+
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "nco_if_mixer.v"]
+set_global_assignment -library "nco_if_mixer" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/nco_if_mixer_nco_ii_0_sin.hex"]
+set_global_assignment -library "nco_if_mixer" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/nco_if_mixer_nco_ii_0_cos.hex"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/nco_if_mixer_nco_ii_0.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_nco_fxx.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_nco_mob_rw.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_nco_isdr.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_nco_apr_dxx.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_nco_pxx.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_dxx_g.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_dxx.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_gal.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_nco_as_m_cen.v"]
+set_global_assignment -library "nco_if_mixer" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/asj_altqmcpipe.v"]
+set_global_assignment -library "nco_if_mixer" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/asj_altq.ocp"]
+set_global_assignment -library "nco_if_mixer" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/asj_altqmcash.ocp"]
+set_global_assignment -library "nco_if_mixer" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/asj_altqmcpipe.ocp"]
+
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_TOOL_NAME "altera_nco_ii"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_TOOL_VERSION "14.1"
+set_global_assignment -entity "nco_if_mixer_nco_ii_0" -library "nco_if_mixer" -name IP_TOOL_ENV "Qsys"

@@ -1,0 +1,81 @@
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_TOOL_NAME "altera_fir_compiler_ii"
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_TOOL_VERSION "14.1"
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_TOOL_ENV "mwpim"
+set_global_assignment -library "Fir_10R" -name MISC_FILE [file join $::quartus(qip_path) "Fir_10R.cmp"]
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_TARGETED_DEVICE_FAMILY "Cyclone V"
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone V}"
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_QSYS_MODE "UNKNOWN"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_COMPONENT_NAME "RmlyXzEwUg=="
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_COMPONENT_DISPLAY_NAME "RklSIElJ"
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_COMPONENT_VERSION "MTQuMQ=="
+set_global_assignment -entity "Fir_10R" -library "Fir_10R" -name IP_COMPONENT_DESCRIPTION "QWx0ZXJhIEZJUiBJSQ=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_NAME "RmlyXzEwUl8wMDAy"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_DISPLAY_NAME "RklSIElJ"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_VERSION "MTQuMQ=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_DESCRIPTION "QWx0ZXJhIEZJUiBJSQ=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "ZmlsdGVyVHlwZQ==::c2luZ2xl::RmlsdGVyIFR5cGU="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "aW50ZXJwRmFjdG9y::MQ==::SW50ZXJwb2xhdGlvbiBGYWN0b3I="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "ZGVjaW1GYWN0b3I=::MQ==::RGVjaW1hdGlvbiBGYWN0b3I="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "c3ltbWV0cnlNb2Rl::bnN5bQ==::U3ltbWV0cnk="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "TF9iYW5kc0ZpbHRlcg==::MQ==::TC10aCBCYW5kIEZpbHRlcg=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "aW5wdXRDaGFubmVsTnVt::MQ==::TnVtYmVyIG9mIENoYW5uZWxz"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y2xvY2tSYXRl::OA==::Q2xvY2sgUmF0ZQ=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y2xvY2tTbGFjaw==::MA==::Q2xvY2sgU2xhY2s="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "aW5wdXRSYXRl::OA==::SW5wdXQgU2FtcGxlIFJhdGUgKE1TUFMp"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y29lZmZSZWxvYWQ=::ZmFsc2U=::Q29lZmZpY2llbnRzIFJlbG9hZA=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "YmFja1ByZXNzdXJl::ZmFsc2U=::QmFjayBQcmVzc3VyZSBTdXBwb3J0"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "ZGV2aWNlRmFtaWx5::Q3ljbG9uZSBW::RGV2aWNlIEZhbWlseQ=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "c3BlZWRHcmFkZQ==::bWVkaXVt::U3BlZWQgR3JhZGU="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "ZGVsYXlSQU1CbG9ja1RocmVzaG9sZA==::MjA=::Q0RlbGF5IFJBTSBCbG9jayBUaHJlc2hvbGQ="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "ZHVhbE1lbURpc3RSQU1UaHJlc2hvbGQ=::MTI4MA==::Q0R1YWwgTWVtIERpc3QgUkFNIFRocmVzaG9sZA=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "bVJBTVRocmVzaG9sZA==::MTAwMDAwMA==::TS1SQU0gVGhyZXNob2xk"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "aGFyZE11bHRpcGxpZXJUaHJlc2hvbGQ=::LTE=::SGFyZCBNdWx0aXBsaWVyIFRocmVzaG9sZA=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "aW5wdXRUeXBl::aW50::SW5wdXQgVHlwZQ=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "aW5wdXRCaXRXaWR0aA==::MTI=::SW5wdXQgQml0IFdpZHRo"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRSZWFsVmFsdWU=::Ni4yMjIzMzIxODgzNjMwOEUtMTksNi41MDM5NTUzNjY3NjU4OEUtNCwwLjAwMTI0MDI1NDU3NTc1NDAyLDAuMDAxNTQxNjg4NTY1OTc2MTcsMC4wMDEyMTY4MDcyNjQzMjg0LC0xLjMwNTU0MDA0ODI1MTY5RS0xOCwtMC4wMDIwMTA3MTczOTYxODUzNSwtMC4wMDQxNDA3MTA1NzgyNTY1NCwtMC4wMDUyMTQ1NTE3MjE5NjczNSwtMC4wMDQwMTQ3NDY2MTk0NDE4LDMuMDk0NDYwNTUyNDA2MDdFLTE4LDAuMDA2MDUwMzY5NDg5ODU1NTcsMC4wMTE4NzQyMjA2NDg4NDU5LDAuMDE0MzE3NjIxNjQ1NTMyMSwwLjAxMDYyNTcxNjc1MzA2ODcsLTUuMzA1Njg3OTAxODg0MDhFLTE4LC0wLjAxNTI2MTM0NTY5MjI5NjEsLTAuMDI5NjkxMTE4NjEzNDkyMSwtMC4wMzU5NDkwNzY4MjQ2ODA2LC0wLjAyNzIzMDczNzc2OTAzNTQsNy4wOTQ2MDg0MDYwMzg0N0UtMTgsMC4wNDQwMDg3NzYxNDc3MDk0LDAuMDk3NDE5NzI2NTc2NjM1MywwLjE0ODgyNTIzNjQ2OTUyLDAuMTg1OTc4NTY0MjYxNDk2LDAuMTk5NTI3MjU0NTU5OTE1LDAuMTg1OTc4NTY0MjYxNDk2LDAuMTQ4ODI1MjM2NDY5NTIsMC4wOTc0MTk3MjY1NzY2MzUzLDAuMDQ0MDA4Nzc2MTQ3NzA5NCw3LjA5NDYwODQwNjAzODQ3RS0xOCwtMC4wMjcyMzA3Mzc3NjkwMzU0LC0wLjAzNTk0OTA3NjgyNDY4MDYsLTAuMDI5NjkxMTE4NjEzNDkyMSwtMC4wMTUyNjEzNDU2OTIyOTYxLC01LjMwNTY4NzkwMTg4NDA4RS0xOCwwLjAxMDYyNTcxNjc1MzA2ODcsMC4wMTQzMTc2MjE2NDU1MzIxLDAuMDExODc0MjIwNjQ4ODQ1OSwwLjAwNjA1MDM2OTQ4OTg1NTU3LDMuMDk0NDYwNTUyNDA2MDdFLTE4LC0wLjAwNDAxNDc0NjYxOTQ0MTgsLTAuMDA1MjE0NTUxNzIxOTY3MzUsLTAuMDA0MTQwNzEwNTc4MjU2NTQsLTAuMDAyMDEwNzE3Mzk2MTg1MzUsLTEuMzA1NTQwMDQ4MjUxNjlFLTE4LDAuMDAxMjE2ODA3MjY0MzI4NCwwLjAwMTU0MTY4ODU2NTk3NjE3LDAuMDAxMjQwMjU0NTc1NzU0MDIsNi41MDM5NTUzNjY3NjU4OEUtNCw2LjIyMjMzMjE4ODM2MzA4RS0xOQ==::UmVhbCBDb2VmZmljaWVudCBWYWx1ZXM="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y29lZmZOdW0=::NTE=::TnVtYmVyIG9mIENvZWZmaWNpZW50cw=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRTY2FsZVZhbHVl::MC4wLDAuMDAwNTg0ODM4MDY5MDU2OTA3NiwwLjAwMTE2OTY3NjEzODExMzgxNTIsMC4wMDE0NjIwOTUxNzI2NDIyNjksMC4wMDExNjk2NzYxMzgxMTM4MTUyLDAuMCwtMC4wMDE5NDk0NjAyMzAxODk2OTIsLTAuMDA0MDkzODY2NDgzMzk4MzUzLC0wLjAwNTE2NjA2OTYxMDAwMjY4MzUsLTAuMDAzOTk2MzkzNDcxODg4ODY4LDAuMCwwLjAwNjA0MzMyNjcxMzU4ODA0NSwwLjAxMTc5NDIzNDM5MjY0NzYzNywwLjAxNDIzMTA1OTY4MDM4NDc1MSwwLjAxMDYyNDU1ODI1NDUzMzgyMiwwLjAsLTAuMDE1MjA1Nzg5Nzk1NDc5NTk4LC0wLjAyOTYzMTc5NTQ5ODg4MzMyLC0wLjAzNTg3MDA2ODIzNTQ5MDMzNCwtMC4wMjcxOTQ5NzAyMTExNDYyMDQsMC4wLDAuMDQzOTYwMzI4MTkwNzc3NTUsMC4wOTczNzU1Mzg0OTc5NzUxMiwwLjE0ODc0MzgxNTU2MzQ3MzUsMC4xODU5Nzg1MDU5NjAwOTY2MywwLjE5OTUyNzI1NDU1OTkxNDk2LDAuMTg1OTc4NTA1OTYwMDk2NjMsMC4xNDg3NDM4MTU1NjM0NzM1LDAuMDk3Mzc1NTM4NDk3OTc1MTIsMC4wNDM5NjAzMjgxOTA3Nzc1NSwwLjAsLTAuMDI3MTk0OTcwMjExMTQ2MjA0LC0wLjAzNTg3MDA2ODIzNTQ5MDMzNCwtMC4wMjk2MzE3OTU0OTg4ODMzMiwtMC4wMTUyMDU3ODk3OTU0Nzk1OTgsMC4wLDAuMDEwNjI0NTU4MjU0NTMzODIyLDAuMDE0MjMxMDU5NjgwMzg0NzUxLDAuMDExNzk0MjM0MzkyNjQ3NjM3LDAuMDA2MDQzMzI2NzEzNTg4MDQ1LDAuMCwtMC4wMDM5OTYzOTM0NzE4ODg4NjgsLTAuMDA1MTY2MDY5NjEwMDAyNjgzNSwtMC4wMDQwOTM4NjY0ODMzOTgzNTMsLTAuMDAxOTQ5NDYwMjMwMTg5NjkyLDAuMCwwLjAwMTE2OTY3NjEzODExMzgxNTIsMC4wMDE0NjIwOTUxNzI2NDIyNjksMC4wMDExNjk2NzYxMzgxMTM4MTUyLDAuMDAwNTg0ODM4MDY5MDU2OTA3NiwwLjA=::U2NhbGVkIENvZWZmaWNpZW50IFZhbHVlcw=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y29lZmZTZXRGaXhlZFZhbHVl::MCw2LDEyLDE1LDEyLDAsLTIwLC00MiwtNTMsLTQxLDAsNjIsMTIxLDE0NiwxMDksMCwtMTU2LC0zMDQsLTM2OCwtMjc5LDAsNDUxLDk5OSwxNTI2LDE5MDgsMjA0NywxOTA4LDE1MjYsOTk5LDQ1MSwwLC0yNzksLTM2OCwtMzA0LC0xNTYsMCwxMDksMTQ2LDEyMSw2MiwwLC00MSwtNTMsLTQyLC0yMCwwLDEyLDE1LDEyLDYsMA==::Rml4ZWQtcG9pbnQgQ29lZmZpY2llbnQgVmFsdWVz"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y29lZmZTY2FsaW5n::YXV0bw==::Q29lZmZpY2llbnQgU2NhbGluZw=="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y29lZmZUeXBl::aW50::Q29lZmZpY2llbnQgRGF0YSBUeXBl"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y29lZmZCaXRXaWR0aA==::MTI=::Q29lZmZpY2llbnQgQml0IFdpZHRo"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "b3V0VHlwZQ==::aW50::T3V0cHV0IFR5cGU="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "b3V0TVNCUm91bmQ=::dHJ1bmM=::TVNCIFJvdW5kaW5n"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "b3V0TXNiQml0UmVt::MA==::TVNCIEJpdHMgdG8gUmVtb3Zl"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "b3V0TFNCUm91bmQ=::dHJ1bmM=::TFNCIFJvdW5kaW5n"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "b3V0THNiQml0UmVt::MA==::TFNCIEJpdHMgdG8gUmVtb3Zl"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "aW5wdXRJbnRlcmZhY2VOdW0=::MQ==::TnVtYmVyIG9mIFBhcmFsbGVsIElucHV0IFN5bWJvbHM="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "b3V0cHV0SW50ZXJmYWNlTnVt::MQ==::TnVtYmVyIG9mIFBhcmFsbGVsIE91dHB1dCBTeW1ib2xz"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y2hhblBlcklucHV0SW50ZXJmYWNl::MQ==::TnVtYmVyIG9mIENoYW5uZWxzIHBlciBJbnB1dCBJbnRlcmZhY2U="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "Y2hhblBlck91dHB1dEludGVyZmFjZQ==::MQ==::TnVtYmVyIG9mIENoYW5uZWxzIHBlciBPdXRwdXQgSW50ZXJmYWNl"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "YmFua0NvdW50::MQ==::TnVtYmVyIG9mIENvZWZmaWNpZW50IEJhbmtz"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "YmFua0Rpc3BsYXk=::MA==::YmFua0Rpc3BsYXk="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "bHV0Q291bnQ=::NzM=::TnVtYmVyIG9mIExVVHM="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "ZHNwQ291bnQ=::NTI=::TnVtYmVyIG9mIERTUHM="
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "bWVtQml0Q291bnQ=::MA==::TnVtYmVyIG9mIE1lbW9yeSBCaXRz"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_COMPONENT_PARAMETER "ZXJyb3JMaXN0::MA==::ZXJyb3JMaXN0"
+
+set_global_assignment -library "Fir_10R" -name VERILOG_FILE [file join $::quartus(qip_path) "Fir_10R.v"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/dspba_library_package.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/dspba_library.vhd"]
+set_global_assignment -library "Fir_10R" -name VERILOG_FILE [file join $::quartus(qip_path) "Fir_10R/altera_avalon_sc_fifo.v"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/auk_dspip_math_pkg_hpfir.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/auk_dspip_lib_pkg_hpfir.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/auk_dspip_avalon_streaming_controller_hpfir.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/auk_dspip_avalon_streaming_sink_hpfir.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/auk_dspip_avalon_streaming_source_hpfir.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/auk_dspip_roundsat_hpfir.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/Fir_10R_0002_rtl.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/Fir_10R_0002_ast.vhd"]
+set_global_assignment -library "Fir_10R" -name VHDL_FILE [file join $::quartus(qip_path) "Fir_10R/Fir_10R_0002.vhd"]
+
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_TOOL_NAME "altera_fir_compiler_ii"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_TOOL_VERSION "14.1"
+set_global_assignment -entity "Fir_10R_0002" -library "Fir_10R" -name IP_TOOL_ENV "mwpim"

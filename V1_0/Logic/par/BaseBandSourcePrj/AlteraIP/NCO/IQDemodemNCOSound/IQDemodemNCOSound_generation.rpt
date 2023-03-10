@@ -1,0 +1,28 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO --output-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound --report-file=bsf:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\IQDemodemNCOSound.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound.qsys --remove-qsys-generate-warning
+Progress: Loading NCO/IQDemodemNCOSound.qsys
+Progress: Reading input file
+Progress: Adding nco_ii_0 [altera_nco_ii 14.1]
+Progress: Parameterizing module nco_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO --output-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\synthesis --file-set=QUARTUS_SYNTH --report-file=html:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\IQDemodemNCOSound.html --report-file=sopcinfo:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound.sopcinfo --report-file=cmp:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\IQDemodemNCOSound.cmp --report-file=qip:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\synthesis\IQDemodemNCOSound.qip --report-file=svd:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\synthesis\IQDemodemNCOSound.svd --report-file=regmap:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\synthesis\IQDemodemNCOSound.regmap --report-file=xml:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\IQDemodemNCOSound.xml --report-file=debuginfo:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound\synthesis\IQDemodemNCOSound.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\IQDemodemNCOSound.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading NCO/IQDemodemNCOSound.qsys
+Progress: Reading input file
+Progress: Adding nco_ii_0 [altera_nco_ii 14.1]
+Progress: Parameterizing module nco_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: IQDemodemNCOSound: Generating IQDemodemNCOSound "IQDemodemNCOSound" for QUARTUS_SYNTH
+Info: nco_ii_0: "IQDemodemNCOSound" instantiated altera_nco_ii "nco_ii_0"
+Info: IQDemodemNCOSound: Done "IQDemodemNCOSound" with 2 modules, 21 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

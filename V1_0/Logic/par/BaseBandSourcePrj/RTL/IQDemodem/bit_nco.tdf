@@ -1,0 +1,68 @@
+  FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION acc33(clock,data[31..0])
+   RETURNS (result[32..0]);
+
+
+SUBDESIGN bit_nco
+(
+	clk_sys			: input;
+	nco_f[31..0]	: input;
+	result[32..0]	: output;
+	bs					: output;
+	qpsk_bs			: output;
+)
+VARIABLE
+	bs_d				:lpm_dff WITH (LPM_WIDTH=1);
+	qpsk_bs_d		:lpm_dff WITH (LPM_WIDTH=1);
+	g_zb_f			:lpm_dff WITH (LPM_WIDTH=1);
+	g_fb_f			:lpm_dff WITH (LPM_WIDTH=1);
+	limit[1..0]		:node;
+	del_limit[1..0]:dffe;
+	res[32..0]		:node;
+BEGIN
+		res[32..0]=acc33(clk_sys,nco_f[31..0]);
+		limit[1..0]=res[31..30];
+		del_limit[1..0]=limit[1..0];
+		del_limit[1..0].clk=clk_sys;
+		
+		if((del_limit[1..0]==0) and (limit[1..0]==1)) then g_zb_f.sset=VCC;
+															g_fb_f.sset=GND;
+			elsif((del_limit[1..0]==2) and (limit[1..0]==3)) then g_zb_f.sset=GND;
+																g_fb_f.sset=VCC;
+	
+						else g_zb_f.sset=GND;
+							g_fb_f.sset=GND;
+		end if;
+		g_zb_f.data[0]=g_zb_f.q[0];
+		g_zb_f.clock=clk_sys;
+		g_fb_f.data[0]=g_fb_f.q[0];
+		g_fb_f.clock=clk_sys;
+		
+		bs_d.data[0]=bs_d.q[0];
+		bs_d.clock=clk_sys;
+		qpsk_bs_d.data[0]=qpsk_bs_d.q[0];
+		qpsk_bs_d.clock=clk_sys;
+		if ((g_zb_f.q[0]==1) and (res[31]==1)) then bs_d.sset=VCC;
+												g_zb_f.sclr=VCC;
+				else bs_d.sset=GND;
+					g_zb_f.sclr=GND;
+		end if;
+		if ((g_fb_f.q[0]==1) and (res[31]==0)) then bs_d.sclr=VCC;
+												g_fb_f.sclr=VCC;
+												if res[32]==1 then qpsk_bs_d.sset=VCC;
+																	qpsk_bs_d.sclr=GND;
+															else qpsk_bs_d.sclr=VCC;
+																qpsk_bs_d.sset=GND;
+												end if;
+				else bs_d.sclr=GND;
+					g_fb_f.sclr=GND;
+					qpsk_bs_d.sclr=GND;
+					qpsk_bs_d.sset=GND;
+			end if;
+		
+		result[32..0]=res[32..0];
+		bs=bs_d.q[0];
+		qpsk_bs=qpsk_bs_d.q[0];
+END;

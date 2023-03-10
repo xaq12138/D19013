@@ -1,0 +1,28 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC --output-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet --report-file=bsf:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\CICRxSet.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet.qsys --remove-qsys-generate-warning
+Progress: Loading CIC/CICRxSet.qsys
+Progress: Reading input file
+Progress: Adding cic_ii_0 [altera_cic_ii 14.1]
+Progress: Parameterizing module cic_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC --output-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\synthesis --file-set=QUARTUS_SYNTH --report-file=html:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\CICRxSet.html --report-file=sopcinfo:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet.sopcinfo --report-file=cmp:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\CICRxSet.cmp --report-file=qip:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\synthesis\CICRxSet.qip --report-file=svd:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\synthesis\CICRxSet.svd --report-file=regmap:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\synthesis\CICRxSet.regmap --report-file=xml:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\CICRxSet.xml --report-file=debuginfo:E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet\synthesis\CICRxSet.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\17004\BaseBandPrj_TxTest\AlteraIP\CIC\CICRxSet.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading CIC/CICRxSet.qsys
+Progress: Reading input file
+Progress: Adding cic_ii_0 [altera_cic_ii 14.1]
+Progress: Parameterizing module cic_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: CICRxSet: Generating CICRxSet "CICRxSet" for QUARTUS_SYNTH
+Info: cic_ii_0: "CICRxSet" instantiated altera_cic_ii "cic_ii_0"
+Info: CICRxSet: Done "CICRxSet" with 2 modules, 31 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

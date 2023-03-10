@@ -1,0 +1,25 @@
+set_global_assignment -entity "Fir_10R" -library "lib_Fir_10R" -name IP_TOOL_NAME "altera_fir_compiler_ii"
+set_global_assignment -entity "Fir_10R" -library "lib_Fir_10R" -name IP_TOOL_VERSION "14.1"
+set_global_assignment -entity "Fir_10R" -library "lib_Fir_10R" -name IP_TOOL_ENV "mwpim"
+set_global_assignment -library "lib_Fir_10R" -name SPD_FILE [file join $::quartus(sip_path) "Fir_10R.spd"]
+
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/dspba_library_package.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/dspba_library.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/altera_avalon_sc_fifo.v"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/auk_dspip_math_pkg_hpfir.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/auk_dspip_lib_pkg_hpfir.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/auk_dspip_avalon_streaming_controller_hpfir.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/auk_dspip_avalon_streaming_sink_hpfir.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/auk_dspip_avalon_streaming_source_hpfir.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/auk_dspip_roundsat_hpfir.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_rtl.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_ast.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_nativelink.tcl"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_msim.tcl"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_tb.vhd"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_mlab.m"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_model.m"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_coef_int.txt"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_input.txt"]
+set_global_assignment -library "lib_Fir_10R" -name MISC_FILE [file join $::quartus(sip_path) "Fir_10R_sim/Fir_10R_param.txt"]

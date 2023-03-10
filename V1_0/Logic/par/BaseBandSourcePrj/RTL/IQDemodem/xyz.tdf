@@ -1,0 +1,101 @@
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], add_sub, clock, aclr, clkn)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ONE_INPUT_IS_CONSTANT, LPM_PIPELINE, MAXIMIZE_SPEED)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+
+SUBDESIGN xyz
+(
+	clk_sys			: INPUT;
+	clk_ena			: INPUT;
+	loopi[2..0]		: input;
+	xi[13..0]		: input;
+	yi[13..0]		: input;
+	zi[13..0]		: input;
+	tan[11..0]		: input;
+	xo[13..0]		: output;
+	yo[13..0]		: output;
+	zo[13..0]		: output;
+)
+VARIABLE
+	xalu			:lpm_add_sub WITH (LPM_WIDTH=14);
+	yalu			:lpm_add_sub WITH (LPM_WIDTH=14);
+	zalu			:lpm_add_sub WITH (LPM_WIDTH=14);
+	xb[13..0]		:dffe;
+	yb[13..0]		:dffe;
+	zb[13..0]		:dffe;
+	1xi[13..0]		:node;
+	1yi[13..0]		:node;
+	tan_n[13..0]	:node;
+BEGIN
+	CASE loopi[2..0] IS
+		WHEN 0 => 1xi[13..0]=xi[13..0];
+				 1yi[13..0]=yi[13..0];
+		WHEN 1 => 1xi[11..0]=xi[12..1];
+				 1xi[13..12]=xi[13];
+				 1yi[11..0]=yi[12..1];
+				 1yi[13..12]=yi[13];
+		WHEN 2 => 1xi[10..0]=xi[12..2];
+				 1xi[13..11]=xi[13];
+				 1yi[10..0]=yi[12..2];
+				 1yi[13..11]=yi[13];
+		WHEN 3 => 1xi[9..0]=xi[12..3];
+				 1xi[13..10]=xi[13];
+				 1yi[9..0]=yi[12..3];
+				 1yi[13..10]=yi[13];
+		WHEN 4 => 1xi[8..0]=xi[12..4];
+				 1xi[13..9]=xi[13];
+				 1yi[8..0]=yi[12..4];
+				 1yi[13..9]=yi[13];
+		WHEN 5 => 1xi[7..0]=xi[12..5];
+				 1xi[13..8]=xi[13];
+				 1yi[7..0]=yi[12..5];
+				 1yi[13..8]=yi[13];
+		WHEN 6 => 1xi[6..0]=xi[12..6];
+				 1xi[13..7]=xi[13];
+				 1yi[6..0]=yi[12..6];
+				 1yi[13..7]=yi[13];
+		WHEN 7 => 1xi[5..0]=xi[12..7];
+				 1xi[13..6]=xi[13];
+				 1yi[5..0]=yi[12..7];
+				 1yi[13..6]=yi[13];
+	END CASE;
+
+%-----x----------------%
+	xalu.cin=yi[13];
+	xalu.dataa[13..0]=xi[13..0];
+	xalu.datab[13..0]=1yi[13..0];
+	xalu.add_sub=!yi[13];
+
+   	xb[13..0]=xalu.result[13..0];
+	xb[].clk=clk_sys;
+	xb[].ena=clk_ena;
+
+%-----y----------------%
+	yalu.cin=!yi[13];
+	yalu.dataa[13..0]=yi[13..0];
+	yalu.datab[13..0]=1xi[13..0];
+	yalu.add_sub=yi[13];
+
+   	yb[13..0]=yalu.result[13..0];
+	yb[].clk=clk_sys;
+	yb[].ena=clk_ena;
+
+%-----z----------------%
+	tan_n[13..12]=GND;
+	tan_n[11..0]=tan[11..0];
+
+	zalu.cin=yi[13];
+	zalu.dataa[13..0]=zi[13..0];
+	zalu.datab[13..0]=tan_n[13..0];
+	zalu.add_sub=!yi[13];
+
+   	zb[13..0]=zalu.result[13..0];
+	zb[].clk=clk_sys;
+	zb[].ena=clk_ena;
+%----------------------%
+	xo[13..0]=xb[13..0];
+	yo[13..0]=yb[13..0];
+	zo[13..0]=zb[13..0];
+
+END;
+
+

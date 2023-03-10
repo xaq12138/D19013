@@ -1,0 +1,28 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=D:\19012ankong\BaseBandSourcePrj --output-directory=D:\19012ankong\BaseBandSourcePrj\NCODY_DY --report-file=bsf:D:\19012ankong\BaseBandSourcePrj\NCODY_DY\NCODY_DY.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=D:\19012ankong\BaseBandSourcePrj\NCODY_DY.qsys --remove-qsys-generate-warning
+Progress: Loading BaseBandSourcePrj/NCODY_DY.qsys
+Progress: Reading input file
+Progress: Adding nco_ii_0 [altera_nco_ii 14.1]
+Progress: Parameterizing module nco_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=D:\19012ankong\BaseBandSourcePrj --output-directory=D:\19012ankong\BaseBandSourcePrj\NCODY_DY\synthesis --file-set=QUARTUS_SYNTH --report-file=html:D:\19012ankong\BaseBandSourcePrj\NCODY_DY\NCODY_DY.html --report-file=sopcinfo:D:\19012ankong\BaseBandSourcePrj\NCODY_DY.sopcinfo --report-file=cmp:D:\19012ankong\BaseBandSourcePrj\NCODY_DY\NCODY_DY.cmp --report-file=qip:D:\19012ankong\BaseBandSourcePrj\NCODY_DY\synthesis\NCODY_DY.qip --report-file=svd:D:\19012ankong\BaseBandSourcePrj\NCODY_DY\synthesis\NCODY_DY.svd --report-file=regmap:D:\19012ankong\BaseBandSourcePrj\NCODY_DY\synthesis\NCODY_DY.regmap --report-file=xml:D:\19012ankong\BaseBandSourcePrj\NCODY_DY\NCODY_DY.xml --report-file=debuginfo:D:\19012ankong\BaseBandSourcePrj\NCODY_DY\synthesis\NCODY_DY.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=D:\19012ankong\BaseBandSourcePrj\NCODY_DY.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading BaseBandSourcePrj/NCODY_DY.qsys
+Progress: Reading input file
+Progress: Adding nco_ii_0 [altera_nco_ii 14.1]
+Progress: Parameterizing module nco_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: NCODY_DY: Generating NCODY_DY "NCODY_DY" for QUARTUS_SYNTH
+Info: nco_ii_0: "NCODY_DY" instantiated altera_nco_ii "nco_ii_0"
+Info: NCODY_DY: Done "NCODY_DY" with 2 modules, 23 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

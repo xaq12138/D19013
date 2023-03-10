@@ -1,0 +1,359 @@
+FUNCTION LCELL (in)
+   RETURNS (out);
+FUNCTION lpm_shiftreg (data[LPM_WIDTH-1..0], clock, enable, shiftin, load, sclr, sset, aclr, aset)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], add_sub, clock, aclr, clkn)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ONE_INPUT_IS_CONSTANT, LPM_PIPELINE, MAXIMIZE_SPEED)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+FUNCTION lpm_abs (data[LPM_WIDTH-1..0])
+   WITH (LPM_WIDTH, ADDERTYPE)
+   RETURNS (result[LPM_WIDTH-1..0], overflow);
+FUNCTION lpm_decode (data[LPM_WIDTH-1..0], enable, clock, aclr)
+   WITH (LPM_WIDTH, LPM_DECODES, LPM_PIPELINE)
+   RETURNS (eq[LPM_DECODES-1..0]);
+FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION lpm_counter (data[LPM_WIDTH-1..0], clock, clk_en, cnt_en, updown, cin, aclr, aset, aconst, aload, sclr, sset, sconst, sload)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_MODULUS, LPM_AVALUE, LPM_SVALUE, CARRY_CNT_EN, LABWIDE_SCLR)
+   RETURNS (q[LPM_WIDTH-1..0], cout, eq[15..0]);
+FUNCTION lpm_compare (dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], clock, aclr)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_PIPELINE, CHAIN_SIZE, ONE_INPUT_IS_CONSTANT)
+   RETURNS (alb, aeb, agb, ageb, aneb, aleb);
+FUNCTION bitsyner_new(clk_sys,clk_samp,pcm_in[2..0],nco_f[31..0],code_bw[1..0],pcm_type[3..0],demodem_mod[3..0],modem_m_s,jf_clr_f,offset_8psk_f,coef[15..0])
+	RETURNS(bs,bs_50,bd,bs_q,bd_q,bit_lock,nco_fof[31..0],nco_fo[31..0],led[7..0],nco_foa[31..0],nco_fob[31..0],nco_foc[31..0],nco_fod[31..0]);
+--	
+--FUNCTION nco_fzb (clk, clken, phi_inc_i[31..0], reset_n)
+--	RETURNS (fsin_o[9..0], fcos_o[9..0], out_valid);
+
+FUNCTION nco_if_mixer (clk, clken, phi_inc_i[31..0], freq_mod_i[31..0], phase_mod_i[31..0] ,reset_n)
+	RETURNS (fsin_o[9..0], fcos_o[9..0], out_valid);
+FUNCTION mult_10x12 (dataa[9..0], datab[11..0])
+	RETURNS (result[21..0]);
+FUNCTION cordic(clk_samp,clk_ena,xi[11..0],yi[11..0])
+	RETURNS (xo[11..0],yo[11..0],zo[11..0],samp_ena);	
+
+--FUNCTION 16acc(clock,data[15..0])
+--   RETURNS (result[15..0]);
+--FUNCTION 3add32 (clock,data0x[31..0],data1x[31..0],data2x[31..0])
+--	RETURNS (result[31..0]);
+--FUNCTION 4add32 (clock, data0x[31..0], data1x[31..0], data2x[31..0], data3x[31..0])
+--	RETURNS (result[31..0]);
+	
+FUNCTION dely_ram(clock,data[7..0],rdaddress[8..0],wraddress[8..0],wren)
+	RETURNS(q[7..0]);	
+	
+--FUNCTION fir_0R1 (clk, clk_enable, reset, filter_in[11..0])
+--	WITH (coeff1, coeff2, coeff3, coeff4, coeff5, coeff6, coeff7, coeff8, coeff9, coeff10, coeff11, coeff12, coeff13, coeff14, coeff15, coeff16, coeff17, coeff18, coeff19, coeff20, coeff21, coeff22, coeff23, coeff24, coeff25, coeff26, coeff27, coeff28, coeff29, coeff30, coeff31, coeff32, coeff33, coeff34, coeff35, coeff36, coeff37, coeff38, coeff39, coeff40, coeff41, coeff42, coeff43, coeff44, coeff45, coeff46, coeff47, coeff48, coeff49, coeff50, coeff51)
+--	RETURNS (filter_out[25..0]);
+--FIR1M_LP QDataFIR1M(
+--	.clk(									ad_data_clk),             
+--	.reset_n(							rst_n),        
+--	.ast_sink_data(					QDataFSoundCic_o[31:20]),
+--	.ast_sink_valid(					QDataFSoundCicEn_o),  
+--	.ast_sink_error(					2'B00),  
+--	.ast_source_data(					QDataFSoundCicFir_o[31:0]), 
+--	.ast_source_valid(				),
+--	.ast_source_error(				));
+FUNCTION FIR1M_LP(clk, reset_n, ast_sink_data[11..0], ast_sink_valid, ast_sink_error[1..0])
+	RETURNS (ast_source_data[26..0], ast_source_valid, ast_source_error[1..0]);
+	
+FUNCTION MUL4_32(dataa[3..0],datab[31..0])
+	RETURNS (result[31..0]);
+
+FUNCTION BPSKLocalNCO (clk_i, rst_i, SubcarrierRateSet_i[31..0], BPSKTheta_i[11..0], BPSKThetaValid_i)
+	RETURNS (LocalNCOSin_o[9..0], LocalNCOCos_o[9..0]);
+	
+--FUNCTION CICRxSet (clk, reset_n, in_data[11..0], rate[4..0], in_valid, out_ready, in_error[1..0])
+--	RETURNS (out_data[41..0], in_ready, out_valid, out_error[1..0]);
+	
+SUBDESIGN jsj_fzb_jt
+(
+	clk_sys						:input;
+	code_f[31..0]				:input;--ma lv
+	clk_ena						:input;
+	fm_in[11..0]				:input;
+	rst_s							:input;
+	fzb_time[3..0]				:input;
+-------------------------------
+	pcm_out						:output;--pcm_out
+	pcm_out_d					:output;
+	pcm_out_ena					:output;
+)
+VARIABLE
+	fzb_nco						:nco_if_mixer;--nco_fzb;
+--	fzb_nco						:BPSKLocalNCO;
+--	fir_jd_i						:fir_0R1;
+--	fir_jd_q						:fir_0R1;
+	fir_jd_i						:FIR1M_LP;
+	fir_jd_q						:FIR1M_LP;
+	jd_to_r						:cordic;
+	buf_theta					:dely_ram;
+	i_fzb[21..0]				:node;
+	q_fzb[21..0]				:node;
+
+--	code_4f[31..0]				:node;
+--	code_5f[31..0]				:node;
+	before_s[7..0]				:node;
+	del_addr[8..0]				:dffe;
+	del_addr_wr[8..0]			:dffe;
+--	fzb_buff[11..0]			:dffe;
+	fzb_sin[9..0]				:node;
+	fzb_cos[9..0]				:node;
+	buf_fzb_sin_f				:dffe;
+	fzb_plus						:node;
+	fzb_cont						:lpm_counter WITH (LPM_WIDTH=4);
+	fzb_clk_ena_cnt			:lpm_counter WITH (LPM_WIDTH=4);
+	fzb_5plus					:node;
+	jd_i_buff[11..0]			:dffe;
+	jd_q_buff[11..0]			:dffe;
+	jd_theta[7..0]				:node;
+	s_theta[7..0]				:dffe;
+	fzb_5plus_0					:dffe;	
+	clk_ena_jd					:node;
+	fzb_clk_ena					:node;
+	fzb_clk_ena_d				:node;
+--	pcm_reg[9..0][3..0] 		:dffe;
+--	pcm_sum[3..0] 				:dffe;
+--	pcm_out_reg	 				:dffe;
+	code_nf						:MUL4_32;
+--	CICRxSetRate12IData		:CICRxSet;
+--	CICRxSetRate12QData		:CICRxSet;
+--	i_fzb_cic_clk_ena			:node;
+--	i_fzb_cic[11..0]			:node;
+--	q_fzb_cic_clk_ena			:node;
+--	q_fzb_cic[11..0]			:node;
+	
+	
+--	t_count						:lpm_counter with (lpm_width=4);
+--	turn_plus					:node;
+--	del_turn[2..0]				:dffe;
+--	del_turn_plus				:node;
+--	dte_pj_1r_a[15..0]		:node;
+--	dte_pj_1r[15..0]			:dffe;
+--	dte_pj_2r[15..0]			:dffe;
+--	det_theta[15..0]			:node;
+--	det_theta_tr[31..0]		:dffe;
+	theta_return[11..0]		:node;
+	
+BEGIN
+	fzb_5plus_0.clk							=clk_sys;
+	fzb_5plus_0									=fzb_5plus;
+-----fzb JT----
+--	code_4f[31..2]								=code_f[29..0];
+--	code_4f[1..0]								=GND;
+--	code_5f[31..0]								=code_4f[31..0]+code_f[31..0];
+	code_nf.dataa[3..0]						=fzb_time[3..0]+1;
+	code_nf.datab[31..0]						=code_f[31..0];
+
+--FUNCTION BPSKLocalNCO (clk_i, rst_i, SubcarrierRateSet_i[31..0], BPSKTheta_i[11..0], BPSKThetaValid_i)
+--	RETURNS (LocalNCOSin_o[9..0], LocalNCOCos_o[9..0]);	
+	fzb_nco.phi_inc_i[31..0]				=code_nf.result[31..0];--code_5f[31..0];
+	fzb_nco.clk									=clk_sys;
+	fzb_nco.reset_n							=rst_s;
+	fzb_nco.clken								=VCC;		
+	fzb_nco.freq_mod_i[31..0]				=GND;
+	fzb_nco.phase_mod_i[31..0]				=GND;--det_theta_tr[31..0];
+	fzb_sin[9..0]								=fzb_nco.fsin_o[9..0];
+	fzb_cos[9..0]								=fzb_nco.fcos_o[9..0];
+	
+--	fzb_nco.clk_i								=clk_sys;
+--	fzb_nco.rst_i								=!rst_s;
+--	fzb_nco.SubcarrierRateSet_i[31..0]	=code_nf.result[31..0];
+--	fzb_nco.BPSKTheta_i[11..0]				=theta_return[11..0];
+--   fzb_nco.BPSKThetaValid_i				=fzb_clk_ena;--clk_ena;
+--   fzb_sin[9..0]								=fzb_nco.LocalNCOSin_o[9..0];
+--   fzb_cos[9..0]								=fzb_nco.LocalNCOCos_o[9..0];
+
+
+------------------------------------------
+--	det_theta[15..11]=theta_return[10];			--(Theta)*2
+--	det_theta[10..0]=theta_return[10..0];                 
+--
+-----误差平均---
+--	t_count.clock=clk_sys;
+--	t_count.clk_en=clk_ena;
+--	
+--	turn_plus=clk_ena and t_count.cout;
+--	del_turn[0]=turn_plus;
+--	del_turn[2..1]=del_turn[1..0];
+--	del_turn[].clk=clk_sys;
+--	del_turn_plus=del_turn[2];
+--	
+-- 	if t_count.cout==VCC then dte_pj_1r[]=det_theta[15..0];
+--			else dte_pj_1r[]=dte_pj_1r_a[];
+--	end if;
+--	dte_pj_1r[].clk=clk_sys;
+--	dte_pj_1r[].ena=clk_ena;
+--
+--	dte_pj_1r_a[15..0]=dte_pj_1r[15..0]+det_theta[15..0];
+--
+--	dte_pj_2r[]=dte_pj_1r[];
+--	dte_pj_2r[].ena=turn_plus;
+--	dte_pj_2r[].clk=clk_sys;
+----相位调节
+--	if turn_plus==VCC then 	det_theta_tr[31..27]=dte_pj_1r[15];		---每16个样点调一次,1/16(BPSK) 1/32(QPSK)
+--									det_theta_tr[26..11]=dte_pj_1r[15..0];
+--									det_theta_tr[10..0]=dte_pj_1r[15];
+--			else det_theta_tr[31..0]=GND;
+--	end if;
+--	det_theta_tr[].clk=clk_sys;	
+------------------------------------------
+	i_fzb[21..0]								=mult_10x12(fzb_sin[9..0],fm_in[11..0]);
+	q_fzb[21..0]								=mult_10x12(fzb_cos[9..0],fm_in[11..0]);
+	
+	buf_fzb_sin_f								=fzb_sin[9];
+	buf_fzb_sin_f.ena							=clk_ena;
+	buf_fzb_sin_f.clk							=clk_sys;
+	
+	fzb_plus										=buf_fzb_sin_f and !fzb_sin[9] and clk_ena;
+	
+	fzb_cont.clock								=clk_sys;
+	fzb_cont.clk_en							=fzb_plus;
+	fzb_cont.sclr								=fzb_5plus;
+	if fzb_cont.q[3..0]==fzb_time[3..0]  then --4 then 
+		fzb_5plus								=fzb_plus;
+	else 
+		fzb_5plus								=GND;
+	end if;
+	
+	fzb_clk_ena									=fzb_clk_ena_d and clk_ena;
+--	fzb_clk_ena									=clk_ena and i_fzb_cic_clk_ena;
+	
+	fzb_clk_ena_cnt.clock					=clk_sys;
+	fzb_clk_ena_cnt.clk_en					=clk_ena;
+	fzb_clk_ena_cnt.sclr						=fzb_clk_ena_d;
+	if fzb_clk_ena_cnt.q[3..0]==fzb_time[3..0] then  --4 then 
+		fzb_clk_ena_d							=vcc;
+	else 	
+		fzb_clk_ena_d							=GND;
+	end if;
+		
+--	CICRxSetRate12IData.clk						=clk_sys;
+--	CICRxSetRate12IData.reset_n				=rst_s;
+--	CICRxSetRate12IData.in_data[11..0]		=i_fzb[20..9];
+--	CICRxSetRate12IData.in_valid				=VCC;
+--	CICRxSetRate12IData.out_ready				=VCC;
+--	CICRxSetRate12IData.in_error[1..0]		=GND;
+--	i_fzb_cic_clk_ena								=CICRxSetRate12IData.out_valid;
+--	i_fzb_cic[11..0]								=CICRxSetRate12IData.out_data[40..29];
+--	
+--	CICRxSetRate12QData.clk						=clk_sys;
+--	CICRxSetRate12QData.reset_n				=rst_s;
+--	CICRxSetRate12QData.in_data[11..0]		=q_fzb[20..9];
+--	CICRxSetRate12QData.in_valid				=VCC;
+--	CICRxSetRate12QData.out_ready				=VCC;
+--	CICRxSetRate12QData.in_error[1..0]		=GND;
+--	q_fzb_cic_clk_ena								=CICRxSetRate12QData.out_valid;
+--	q_fzb_cic[11..0]								=CICRxSetRate12QData.out_data[40..29];
+	
+--FIR---
+------------fir_ii----------------------------------
+--	fir_jd_i.clk								=clk_sys;
+--	fir_jd_i.reset								=!rst_s;
+--	fir_jd_i.filter_in[11..0]				=i_fzb_cic[11..0];--i_fzb[20..9];
+--	fir_jd_i.clk_enable						=fzb_clk_ena;
+--	jd_i_buff[11..0]							=fir_jd_i.filter_out[25..14];
+--	jd_i_buff[].ena							=fzb_clk_ena;--clk_ena;
+--	jd_i_buff[].clk							=clk_sys;
+--				
+--	fir_jd_q.clk								=clk_sys;
+--	fir_jd_q.reset								=!rst_s;
+--	fir_jd_q.filter_in[11..0]				=q_fzb_cic[11..0];--q_fzb[20..9];
+--	fir_jd_q.clk_enable						=fzb_clk_ena;
+--	jd_q_buff[11..0]							=fir_jd_q.filter_out[25..14];
+--	jd_q_buff[].ena							=fzb_clk_ena;--clk_ena;
+--	jd_q_buff[].clk							=clk_sys;
+
+--FUNCTION FIR1M_LP(clk, reset_n, ast_sink_data[11..0], ast_sink_valid,ast_sink_error[1..0])
+--	RETURNS (ast_source_data[26..0], ast_source_valid, ast_source_error[1..0]);
+
+	fir_jd_i.clk								=clk_sys;
+	fir_jd_i.reset_n							=rst_s;
+	fir_jd_i.ast_sink_data[11..0]			=i_fzb[20..9];--i_fzb_cic[11..0];
+	fir_jd_i.ast_sink_valid					=fzb_clk_ena;
+	fir_jd_i.ast_sink_error[1..0]			=GND;
+--	jd_i_buff[11..0]							=fir_jd_i.ast_source_data[26..15];
+	jd_i_buff[].ena							=fzb_clk_ena;--clk_ena;
+	jd_i_buff[].clk							=clk_sys;
+				
+	fir_jd_q.clk								=clk_sys;
+	fir_jd_q.reset_n							=rst_s;
+	fir_jd_q.ast_sink_data[11..0]			=q_fzb[20..9];--q_fzb_cic[11..0];
+	fir_jd_q.ast_sink_valid					=fzb_clk_ena;
+	fir_jd_q.ast_sink_error[1..0]			=GND;
+--	jd_q_buff[11..0]							=fir_jd_q.ast_source_data[26..15];
+	jd_q_buff[].ena							=fzb_clk_ena;--clk_ena;
+	jd_q_buff[].clk							=clk_sys;	
+
+
+
+--	if((ADRxAccFIRFreq[34:26]==9'b1111_1111_1 )||(ADRxAccFIRFreq[34:26]==9'b0000_0000_0))begin
+--		ADRxAccFreq[11:0]				=ADRxAccFIRFreq[26:15];
+--		end
+--	else begin
+--		ADRxAccFreq[11]				=ADRxAccFIRFreq[34];
+--		ADRxAccFreq[10:0]				={11{~ADRxAccFIRFreq[34]}};
+--		end
+	if	fir_jd_i.ast_source_data[26..22]==VCC or fir_jd_i.ast_source_data[26..22]==GND then
+		jd_i_buff[11..0]						=fir_jd_i.ast_source_data[22..11];
+	else 
+		jd_i_buff[11]							=fir_jd_i.ast_source_data[26];
+		jd_i_buff[10..0]						=!fir_jd_i.ast_source_data[26];
+	end if;
+	
+	
+	if	fir_jd_q.ast_source_data[26..22]==VCC or fir_jd_q.ast_source_data[26..22]==GND then
+		jd_q_buff[11..0]						=fir_jd_q.ast_source_data[22..11];
+	else 
+		jd_q_buff[11]							=fir_jd_q.ast_source_data[26];
+		jd_q_buff[10..0]						=!fir_jd_q.ast_source_data[26];
+	end if;
+
+--FIR1M_LP QDataFIR1M(
+--	.clk(									ad_data_clk),             
+--	.reset_n(							rst_n),        
+--	.ast_sink_data(					QDataFSoundCic_o[31:20]),
+--	.ast_sink_valid(					QDataFSoundCicEn_o),  
+--	.ast_sink_error(					2'B00),  
+--	.ast_source_data(					QDataFSoundCicFir_o[31:0]), 
+--	.ast_source_valid(				),
+--	.ast_source_error(				));
+	
+--CORDIC--	
+	jd_to_r.clk_samp							=clk_sys;
+	jd_to_r.clk_ena							=fzb_clk_ena;--clk_ena;--clk_ena;
+	jd_to_r.xi[11..0]							=jd_i_buff[11..0];
+	jd_to_r.yi[11..0]							=jd_q_buff[11..0];
+						
+	jd_theta[7..0]								=jd_to_r.zo[11..4];
+	theta_return[11..0]						=jd_to_r.zo[11..0];
+	clk_ena_jd									=fzb_clk_ena;--clk_ena;--jd_to_r.samp_ena;
+----DBPSK------	
+	del_addr[8..0]								=(del_addr[8..0]+1) and !fzb_5plus;
+	del_addr[].ena								=fzb_clk_ena or fzb_5plus;--clk_ena;
+	del_addr[].clk								=clk_sys;
+	
+	del_addr_wr[8..0]							=del_addr[8..0];
+	del_addr_wr[].ena							=fzb_clk_ena;--clk_ena;
+	del_addr_wr[].clk							=clk_sys;
+	
+	buf_theta.clock							=clk_sys;
+	buf_theta.data[7..0]						=jd_theta[7..0];
+	buf_theta.rdaddress[8..0]				=del_addr[8..0];
+	buf_theta.wraddress[8..0]				=del_addr_wr[8..0];
+	buf_theta.wren								=fzb_clk_ena;--clk_ena;
+	before_s[7..0]								=buf_theta.q[7..0];
+
+	(s_theta[7..0],)							=lpm_abs(jd_theta[7..0]-before_s[7..0])
+													WITH (LPM_WIDTH=8);
+	s_theta[7..0].ena							=fzb_clk_ena;--clk_ena;
+	s_theta[7..0].clk							=clk_sys;
+--------------pcm_jt_out-----------------------------	
+--	pcm_out										=jd_to_r.zo[11];
+	pcm_out										=jd_theta[7] xor jd_theta[6];
+	pcm_out_d									=s_theta[7] xor s_theta[6];
+	pcm_out_ena									=fzb_5plus;
+		
+END;	

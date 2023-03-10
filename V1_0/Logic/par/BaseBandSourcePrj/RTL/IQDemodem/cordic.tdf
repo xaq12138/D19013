@@ -1,0 +1,153 @@
+FUNCTION xyz (clk_sys,clk_ena,loopi[2..0],xi[13..0],yi[13..0],zi[13..0],tan[11..0])
+	RETURNS (xo[13..0],yo[13..0],zo[13..0]);
+FUNCTION lpm_abs (data[LPM_WIDTH-1..0])
+   WITH (LPM_WIDTH, ADDERTYPE)
+   RETURNS (result[LPM_WIDTH-1..0], overflow);
+
+SUBDESIGN cordic
+(
+	clk_samp			: INPUT;
+	clk_ena			: INPUT;
+	iq_singal		: INPUT;
+	xi[11..0]		: input;
+	yi[11..0]		: input;
+	xo[12..0]		: output;
+	yo[11..0]		: output;
+	zo[11..0]		: output;
+	samp_ena			: output;
+	samp_iq_singal	: output;
+)
+VARIABLE
+	1step				:xyz;
+	2step				:xyz;
+	3step				:xyz;
+	4step				:xyz;
+	5step				:xyz;
+	6step				:xyz;
+	7step				:xyz;
+	8step				:xyz;
+
+	clk_sys			:node;
+	x0i[11..0]		:dffe;
+	y0i[11..0]		:dffe;
+	z0i				:dffe;
+	xin[13..0]		:node;
+	yin[13..0]		:node;
+	zin[13..0]		:node;
+	del_clk_ena[7..0] :dff;
+	del_iq_singal[7..0] :dff;
+BEGIN
+	clk_sys=clk_samp;
+	del_clk_ena[0]=clk_ena;
+	del_clk_ena[7..1]=del_clk_ena[6..0];
+	del_clk_ena[].clk=clk_sys;
+	
+	del_iq_singal[0]=iq_singal;
+	del_iq_singal[7..1]=del_iq_singal[6..0];
+	del_iq_singal[].clk=clk_sys;
+----
+
+	if xi[11]==1 then x0i[11..0]=!xi[11..0];
+					  y0i[11..0]=!yi[11..0];
+					  z0i=VCC;
+		else  x0i[11..0]=xi[11..0];
+			  y0i[11..0]=yi[11..0];
+			  z0i=GND;
+	end if;
+	x0i[].clk=clk_sys;
+	y0i[].clk=clk_sys;
+	z0i.clk=clk_sys;
+
+	x0i[].ena=clk_ena;
+	y0i[].ena=clk_ena;
+	z0i.ena=clk_ena;
+
+	xin[11..0]=x0i[11..0];
+	yin[11..0]=y0i[11..0];
+	xin[13..12]=x0i[11];
+	yin[13..12]=y0i[11];
+	zin[13]=z0i;
+	zin[12..0]=GND;
+
+%-------step1-----%
+	1step.clk_sys=clk_sys;
+	1step.clk_ena=del_clk_ena[0];
+	1step.loopi[2..0]=H"0";
+	1step.xi[13..0]=xin[13..0];
+	1step.yi[13..0]=yin[13..0];
+	1step.zi[13..0]=zin[13..0];
+	1step.tan[11..0]=H"800";		%arctan(1)%
+
+%-------step2-----%
+	2step.clk_sys=clk_sys;
+	2step.clk_ena=del_clk_ena[1];
+	2step.loopi[2..0]=H"1";
+	2step.xi[13..0]=1step.xo[13..0];
+	2step.yi[13..0]=1step.yo[13..0];
+	2step.zi[13..0]=1step.zo[13..0];
+	2step.tan[11..0]=H"4b9";		%arctan(1/2)%
+
+%-------step3-----%
+	3step.clk_sys=clk_sys;
+	3step.clk_ena=del_clk_ena[2];
+	3step.loopi[2..0]=H"2";
+	3step.xi[13..0]=2step.xo[13..0];
+	3step.yi[13..0]=2step.yo[13..0];
+	3step.zi[13..0]=2step.zo[13..0];
+	3step.tan[11..0]=H"27f";		%arctan(1/4)%
+
+%-------step4-----%
+	4step.clk_sys=clk_sys;
+	4step.clk_ena=del_clk_ena[3];
+	4step.loopi[2..0]=H"3";
+	4step.xi[13..0]=3step.xo[13..0];
+	4step.yi[13..0]=3step.yo[13..0];
+	4step.zi[13..0]=3step.zo[13..0];
+	4step.tan[11..0]=H"144";		%arctan(1/8)%
+
+%-------step5-----%
+	5step.clk_sys=clk_sys;
+	5step.clk_ena=del_clk_ena[4];
+	5step.loopi[2..0]=H"4";
+	5step.xi[13..0]=4step.xo[13..0];
+	5step.yi[13..0]=4step.yo[13..0];
+	5step.zi[13..0]=4step.zo[13..0];
+	5step.tan[11..0]=H"0a3";		%arctan(1/16)%
+
+%-------step6-----%
+	6step.clk_sys=clk_sys;
+	6step.clk_ena=del_clk_ena[5];
+	6step.loopi[2..0]=H"5";
+	6step.xi[13..0]=5step.xo[13..0];
+	6step.yi[13..0]=5step.yo[13..0];
+	6step.zi[13..0]=5step.zo[13..0];
+	6step.tan[11..0]=H"051";		%arctan(1/32)%
+
+%-------step7-----%
+	7step.clk_sys=clk_sys;
+	7step.clk_ena=del_clk_ena[6];
+	7step.loopi[2..0]=H"6";
+	7step.xi[13..0]=6step.xo[13..0];
+	7step.yi[13..0]=6step.yo[13..0];
+	7step.zi[13..0]=6step.zo[13..0];
+	7step.tan[11..0]=H"029";		%arctan(1/64)%
+
+%-------step8-----%
+	8step.clk_sys=clk_sys;
+	8step.clk_ena=del_clk_ena[7];
+	8step.loopi[2..0]=H"7";
+	8step.xi[13..0]=7step.xo[13..0];
+	8step.yi[13..0]=7step.yo[13..0];
+	8step.zi[13..0]=7step.zo[13..0];
+	8step.tan[11..0]=H"014";		%arctan(1/128)%
+
+%-----output------%
+	xo[12..0]=8step.xo[13..1];
+	yo[11..0]=8step.yo[13..2];
+	zo[11..0]=8step.zo[13..2];
+
+	samp_ena=del_clk_ena[7];
+	samp_iq_singal=del_iq_singal[7];
+END;
+
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="DAPLL_sim/DAPLL.vo" type="VERILOG" />
+ <topLevel name="DAPLL" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="simulation/submodules/clkctr_s_altclkctrl_0.v"
+   type="VERILOG"
+   library="altclkctrl_0" />
+ <file path="simulation/clkctr_s.v" type="VERILOG" />
+ <topLevel name="clkctr_s" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

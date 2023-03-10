@@ -1,0 +1,28 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO --output-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer --report-file=bsf:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\nco_if_mixer.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer.qsys --remove-qsys-generate-warning
+Progress: Loading NCO/nco_if_mixer.qsys
+Progress: Reading input file
+Progress: Adding nco_ii_0 [altera_nco_ii 14.1]
+Progress: Parameterizing module nco_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO --output-directory=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\synthesis --file-set=QUARTUS_SYNTH --report-file=html:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\nco_if_mixer.html --report-file=sopcinfo:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer.sopcinfo --report-file=cmp:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\nco_if_mixer.cmp --report-file=qip:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\synthesis\nco_if_mixer.qip --report-file=svd:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\synthesis\nco_if_mixer.svd --report-file=regmap:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\synthesis\nco_if_mixer.regmap --report-file=xml:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\nco_if_mixer.xml --report-file=debuginfo:E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer\synthesis\nco_if_mixer.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\17004\BaseBandPrj_TxTest\AlteraIP\NCO\nco_if_mixer.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading NCO/nco_if_mixer.qsys
+Progress: Reading input file
+Progress: Adding nco_ii_0 [altera_nco_ii 14.1]
+Progress: Parameterizing module nco_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: nco_if_mixer: Generating nco_if_mixer "nco_if_mixer" for QUARTUS_SYNTH
+Info: nco_ii_0: "nco_if_mixer" instantiated altera_nco_ii "nco_ii_0"
+Info: nco_if_mixer: Done "nco_if_mixer" with 2 modules, 17 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

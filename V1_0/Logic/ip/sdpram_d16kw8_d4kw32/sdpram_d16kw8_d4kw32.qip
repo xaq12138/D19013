@@ -1,0 +1,6 @@
+set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT"
+set_global_assignment -name IP_TOOL_VERSION "14.1"
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "{Cyclone V}"
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "sdpram_d16kw8_d4kw32.v"]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "sdpram_d16kw8_d4kw32_inst.v"]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "sdpram_d16kw8_d4kw32_bb.v"]

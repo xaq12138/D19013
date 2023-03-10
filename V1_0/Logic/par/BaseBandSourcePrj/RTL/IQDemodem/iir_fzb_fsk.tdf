@@ -1,0 +1,74 @@
+FUNCTION lpm_counter (data[LPM_WIDTH-1..0], clock, clk_en, cnt_en, updown, cin, aclr, aset, aconst, aload, sclr, sset, sconst, sload)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_MODULUS, LPM_AVALUE, LPM_SVALUE, CARRY_CNT_EN, LABWIDE_SCLR)
+   RETURNS (q[LPM_WIDTH-1..0], cout, eq[15..0]);
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], add_sub, clock, aclr, clkn)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ONE_INPUT_IS_CONSTANT, LPM_PIPELINE, MAXIMIZE_SPEED)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+FUNCTION lpm_abs (data[LPM_WIDTH-1..0])
+   WITH (LPM_WIDTH, ADDERTYPE)
+   RETURNS (result[LPM_WIDTH-1..0], overflow);
+FUNCTION lpm_compare (dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], clock, aclr, clken)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_PIPELINE, CHAIN_SIZE, ONE_INPUT_IS_CONSTANT)
+   RETURNS (alb, aeb, agb, ageb, aneb, aleb);
+FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+
+SUBDESIGN iir_fzb_fsk
+(
+	clk_sys			:INPUT;
+	ena_smp			:INPUT;
+	f_in[11..0]		:INPUT;
+	afc_flag			:INPUT;	
+	
+	det_f[31..0]	:output;
+)
+VARIABLE
+	m_over_c			:lpm_counter with (lpm_width=8);
+	f_in_a[23..0]	:node;
+	1r_a[23..0]		:node;
+	1r[23..0]		:dffe;
+	2r_a[31..0]		:node;
+	2r_n[31..0]		:node;
+	2r[31..0]		:dffe;
+	
+BEGIN
+
+	m_over_c.clock					=clk_sys;
+	m_over_c.cnt_en				=ena_smp;
+	
+	f_in_a[23..12]					=f_in[11];
+	f_in_a[11..0]					=f_in[11..0];
+	
+	1r_a[23..0]						=1r[23..0]+f_in_a[23..0];
+	
+ 	if (m_over_c.cout)==VCC then 
+		1r[]							=f_in_a[];
+	else 							
+		1r[]							=1r_a[];
+	end if;
+	
+	1r[].ena							=ena_smp;
+	1r[].clk							=clk_sys;
+	
+	2r_n[31..24]					=1r_a[23];
+	2r_n[23..0]						=1r_a[23..0];
+	
+	2r_a[31..0]						=2r_n[31..0]+2r[31..0];
+	if (2r_a[31] and (2r_a[31..12]<H"FFC96")) then	--50K--60M--H"feeee")) then		--250KHz--60MHz	--<H"fff5c")) then		--157.5KHz--<H"f998")) then --157.5KHz  60MHz
+		2r[31..0]					=H"00369D03";			--50K--60M--=H"01111111";		--250KHz--60MHz	--=H"000A3000";				--H"06670000";
+	elsif (!2r_a[31] and (2r_a[31..12]<H"00369"))then	--50K--60M-->H"01111")) then	--250KHz--60MHz	-->H"000A3")) then 	-->H"0667")) then 
+		2r[31..0]					=H"FFC962FC";			--50K--60M--=H"feeeeeee";		--250KHz--60MHz	--H"f998ffff";
+	else 
+		2r[]							=2r_a[];
+	end if;
+	2r[].ena							=m_over_c.cout and ena_smp;
+	2r[].clk							=clk_sys;
+	2r[].clrn						=afc_flag;
+	
+--	det_f[31..26]					=2r[25];
+	det_f[31..0]					=2r[31..0];
+	
+END;
+
+

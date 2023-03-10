@@ -1,0 +1,18 @@
+# system info clkctr_s on 2020.08.11.19:31:22
+system_info:
+name,value
+DEVICE,5CEFA9F23I7
+DEVICE_FAMILY,Cyclone V
+GENERATION_ID,1597145482
+#
+#
+# Files generated for clkctr_s on 2020.08.11.19:31:22
+files:
+filepath,kind,attributes,module,is_top
+simulation/clkctr_s.v,VERILOG,,clkctr_s,true
+simulation/submodules/clkctr_s_altclkctrl_0.v,VERILOG,,clkctr_s_altclkctrl_0,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+clkctr_s.altclkctrl_0,clkctr_s_altclkctrl_0

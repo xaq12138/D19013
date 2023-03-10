@@ -1,0 +1,142 @@
+FUNCTION lpm_counter (data[LPM_WIDTH-1..0], clock, clk_en, cnt_en, updown, cin, aclr, aset, aconst, aload, sclr, sset, sconst, sload)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_MODULUS, LPM_AVALUE, LPM_SVALUE, CARRY_CNT_EN, LABWIDE_SCLR)
+   RETURNS (q[LPM_WIDTH-1..0], cout, eq[15..0]);
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], add_sub, clock, aclr, clkn)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ONE_INPUT_IS_CONSTANT, LPM_PIPELINE, MAXIMIZE_SPEED)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+FUNCTION lpm_abs (data[LPM_WIDTH-1..0])
+   WITH (LPM_WIDTH, ADDERTYPE)
+   RETURNS (result[LPM_WIDTH-1..0], overflow);
+FUNCTION lpm_compare (dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], clock, aclr, clken)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_PIPELINE, CHAIN_SIZE, ONE_INPUT_IS_CONSTANT)
+   RETURNS (alb, aeb, agb, ageb, aneb, aleb);
+FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION 12B_32B_acc(clken,clock,data[11..0],sign_data,sload)
+   RETURNS (result[31..0]);
+
+SUBDESIGN iir_fsk_c
+(
+	clk_sys				: INPUT;
+	ena_smp				: INPUT;
+	afc_flag				: INPUT;
+	f_in[11..0]			: INPUT;
+	code_f[31..0]		: input;
+	fram_lock			: input;
+	
+	out_frn[31..0]		:output;
+	f_lock				:output;
+)
+VARIABLE
+	m_count			: lpm_counter with (lpm_width=20);
+	m_r[31..0]		:dffe;
+	1r_abs[15..0]	:dffe;
+	m_flag			:node;
+	m_turn			:node;
+	m_f_1n[15..0]	:node;
+	m_f_2n[15..0]	:node;
+	m_f_3n[15..0]	:node;
+
+	s_count			: lpm_counter with (lpm_width=20);
+	s_r[31..0]		:dffe;
+	2r_abs[15..0]	:dffe;
+	s_flag			:node;
+	s_turn			:node;
+	s_f_1n[15..0]	:node;
+	s_f_2n[15..0]	:node;
+	s_f_3n[15..0]	:node;
+
+	lock_flag		:dffe;
+	buf_o_a[31..0]	:node;
+	det_f_n[31..0]	:node;
+	det_f_r_a[31..0]	:node;
+	det_f_r[31..0]	:dffe;
+	del_turn[3..0]	:dffe;
+	
+BEGIN
+	del_turn[0]=m_turn or s_turn;
+	del_turn[3..1]=del_turn[2..0];
+	del_turn[].clk=clk_sys;
+	
+--"+" 
+	m_flag=ena_smp and !f_in[11];
+	
+	m_count.clock=clk_sys;
+	m_count.clk_en=m_flag;
+	
+	m_turn=m_count.cout and m_flag;
+	
+   m_r[31..0]=12B_32B_acc(m_flag,clk_sys,f_in[11..0],VCC,m_turn);
+	m_r[31..0].ena=m_turn;
+	m_r[31..0].clk=clk_sys;
+	
+	(1r_abs[15..0],)=lpm_abs ( m_r[31..16])
+ 					  WITH (LPM_WIDTH=16);
+	1r_abs[].ena=m_turn;			  
+	1r_abs[].clk=clk_sys;
+	m_f_1n[15..0]=1r_abs[15..0];
+	m_f_2n[15]=GND;
+	m_f_2n[14..0]=1r_abs[15..1];
+	m_f_3n[15..0]=m_f_1n[15..0]+m_f_2n[15..0];
+	
+--"-" 
+	s_flag=ena_smp and f_in[11];
+	
+	s_count.clock=clk_sys;
+	s_count.clk_en=s_flag;
+	
+	s_turn=s_count.cout and s_flag;
+	
+   s_r[31..0]=12B_32B_acc(s_flag,clk_sys,f_in[11..0],VCC,s_turn);
+	s_r[31..0].ena=s_turn;
+	s_r[31..0].clk=clk_sys;
+	
+	
+	(2r_abs[15..0],)=lpm_abs ( s_r[31..16])
+ 					  WITH (LPM_WIDTH=16);
+	2r_abs[].ena=s_turn;			  
+	2r_abs[].clk=clk_sys;
+	s_f_1n[15..0]=2r_abs[15..0];
+	s_f_2n[15]=GND;
+	s_f_2n[14..0]=2r_abs[15..1];
+	s_f_3n[15..0]=s_f_1n[15..0]+s_f_2n[15..0];
+---------------------
+   (buf_o_a[31..0],,) = lpm_add_sub(GND, m_r[31..0],s_r[31..0],VCC,,,) 
+                           WITH (LPM_WIDTH=32, 
+                                 LPM_REPRESENTATION="signed");
+
+	det_f_n[31..22]=buf_o_a[31];
+	det_f_n[21..0]=buf_o_a[31..10];
+	
+	det_f_r_a[31..0]=det_f_r[31..0]+det_f_n[31..0];
+	if ((det_f_r_a[30..16]>192) and (det_f_r_a[31]==GND)) then 
+																				if fram_lock==VCC then det_f_r[31..0]=H"00c00000";
+																					else det_f_r[31..0]=GND;--=H"ff400000";
+																				end if;
+																				
+		elsif ((det_f_r_a[30..16]<32576) and (det_f_r_a[31]==VCC)) then 
+																							if fram_lock==VCC then det_f_r[31..0]=H"ff400000";
+																								else det_f_r[31..0]=GND;--=H"00c00000";
+																							end if;
+																				
+		else det_f_r[31..0]=det_f_r_a[31..0];
+	end if;
+	det_f_r[].ena=del_turn[3];
+	det_f_r[].clk=clk_sys;
+	det_f_r[].clrn=afc_flag;
+	
+------------
+	if ((m_f_1n[15..0]>s_f_3n[15..0]) or (m_f_2n[15..0]>s_f_1n[15..0]) or
+		(s_f_1n[15..0]>m_f_3n[15..0]) or (s_f_2n[15..0]>m_f_1n[15..0])) 	
+														then lock_flag=GND;
+			else lock_flag=VCC;
+	end if;
+	lock_flag.ena=del_turn[3];
+	lock_flag.clk=clk_sys;
+---------
+	f_lock=lock_flag;	
+	out_frn[]=det_f_r[];
+END;
+
+

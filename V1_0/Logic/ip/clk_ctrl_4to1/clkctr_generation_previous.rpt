@@ -1,0 +1,74 @@
+Info: Starting: Create simulation model
+Info: ip-generate --project-directory=E:\GH_Prj\D19012\V1_0\Logic\par\BaseBandSourcePrj --output-directory=E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\simulation --file-set=SIM_VERILOG --report-file=html:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.html --report-file=sopcinfo:E:\GH_Prj\D19012\V1_0\Logic\par\BaseBandSourcePrj\clkctr.sopcinfo --report-file=csv:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.csv --report-file=spd:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.spd --report-file=cmp:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.cmp --report-file=sip:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\simulation\clkctr.sip --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\GH_Prj\D19012\V1_0\Logic\par\BaseBandSourcePrj\clkctr.qsys --remove-qsys-generate-warning --allow-mixed-language-simulation
+Progress: Loading BaseBandSourcePrj/clkctr.qsys
+Progress: Reading input file
+Progress: Adding altclkctrl_0 [altclkctrl 14.1]
+Progress: Parameterizing module altclkctrl_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: clkctr.altclkctrl_0: Targeting device family: Cyclone V.
+: clkctr.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
+: clkctr.altclkctrl_0: The register mode of port 'ena' is unavailable while 'ena' port not added. 
+Info: clkctr: Generating clkctr "clkctr" for SIM_VERILOG
+Info: altclkctrl_0: Generating top-level entity clkctr_altclkctrl_0.
+Info: altclkctrl_0: "clkctr" instantiated altclkctrl "altclkctrl_0"
+Info: clkctr: Done "clkctr" with 2 modules, 2 files
+Info: ip-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.spd --output-directory=E:/GH_Prj/D19012/V1_0/Logic/ip/clk_ctrl_1to1/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.spd --output-directory=E:/GH_Prj/D19012/V1_0/Logic/ip/clk_ctrl_1to1/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in E:/GH_Prj/D19012/V1_0/Logic/ip/clk_ctrl_1to1/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in E:/GH_Prj/D19012/V1_0/Logic/ip/clk_ctrl_1to1/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in E:/GH_Prj/D19012/V1_0/Logic/ip/clk_ctrl_1to1/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in E:/GH_Prj/D19012/V1_0/Logic/ip/clk_ctrl_1to1/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	1 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in E:/GH_Prj/D19012/V1_0/Logic/ip/clk_ctrl_1to1/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=E:\GH_Prj\D19012\V1_0\Logic\par\BaseBandSourcePrj --output-directory=E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1 --report-file=bsf:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\GH_Prj\D19012\V1_0\Logic\par\BaseBandSourcePrj\clkctr.qsys --remove-qsys-generate-warning
+Progress: Loading BaseBandSourcePrj/clkctr.qsys
+Progress: Reading input file
+Progress: Adding altclkctrl_0 [altclkctrl 14.1]
+Progress: Parameterizing module altclkctrl_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: clkctr.altclkctrl_0: Targeting device family: Cyclone V.
+: clkctr.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
+: clkctr.altclkctrl_0: The register mode of port 'ena' is unavailable while 'ena' port not added. 
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=E:\GH_Prj\D19012\V1_0\Logic\par\BaseBandSourcePrj --output-directory=E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\synthesis --file-set=QUARTUS_SYNTH --report-file=html:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.html --report-file=sopcinfo:E:\GH_Prj\D19012\V1_0\Logic\par\BaseBandSourcePrj\clkctr.sopcinfo --report-file=cmp:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.cmp --report-file=qip:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\synthesis\clkctr.qip --report-file=svd:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\synthesis\clkctr.svd --report-file=regmap:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\synthesis\clkctr.regmap --report-file=xml:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\clkctr.xml --report-file=debuginfo:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\synthesis\clkctr.debuginfo --report-file=greybox:E:\GH_Prj\D19012\V1_0\Logic\ip\clk_ctrl_1to1\greybox\clkctr.v --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CEFA9F23I7 --system-info=DEVICE_SPEEDGRADE=7 --component-file=E:\GH_Prj\D19012\V1_0\Logic\par\BaseBandSourcePrj\clkctr.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading BaseBandSourcePrj/clkctr.qsys
+Progress: Reading input file
+Progress: Adding altclkctrl_0 [altclkctrl 14.1]
+Progress: Parameterizing module altclkctrl_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+: clkctr.altclkctrl_0: Targeting device family: Cyclone V.
+: clkctr.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
+: clkctr.altclkctrl_0: The register mode of port 'ena' is unavailable while 'ena' port not added. 
+Info: clkctr: Generating clkctr "clkctr" for QUARTUS_SYNTH
+Info: altclkctrl_0: Generating top-level entity clkctr_altclkctrl_0.
+Info: altclkctrl_0: "clkctr" instantiated altclkctrl "altclkctrl_0"
+Info: clkctr: Done "clkctr" with 2 modules, 2 files
+Info: Generating third-party timing and resource estimation model ...
+Info: Done generating third-party timing and resource estimation model.
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

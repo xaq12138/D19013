@@ -1,0 +1,697 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus II License Agreement,
+# the Altera MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Altera and sold by Altera or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 14.1.0 Build 186 12/03/2014 SJ Full Version
+# Date created = 10:05:32  June 06, 2017
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		BFMPrj_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CEFA9F23I7
+set_global_assignment -name TOP_LEVEL_ENTITY d19013_sec_ctrl_top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 14.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "10:05:32  JUNE 06, 2017"
+set_global_assignment -name LAST_QUARTUS_VERSION 14.1.0
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "ACTIVE SERIAL X1"
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name STRATIXII_CONFIGURATION_DEVICE EPCS128
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN ON
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED WITH WEAK PULL-UP"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name ACTIVE_SERIAL_CLOCK FREQ_100MHZ
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE ch_test.stp
+set_global_assignment -name GENERATE_TTF_FILE ON
+set_global_assignment -name GENERATE_RBF_FILE ON
+set_global_assignment -name TRI_STATE_SPI_PINS ON
+set_global_assignment -name GENERATE_SVF_FILE ON
+set_global_assignment -name GENERATE_JAM_FILE ON
+set_global_assignment -name GENERATE_JBC_FILE ON
+set_location_assignment PIN_R12 -to ad_si_data[11]
+set_location_assignment PIN_P12 -to ad_si_data[10]
+set_location_assignment PIN_U11 -to ad_si_data[8]
+set_location_assignment PIN_U10 -to ad_si_data[7]
+set_location_assignment PIN_R9 -to ad_si_data[6]
+set_location_assignment PIN_U8 -to ad_si_data[5]
+set_location_assignment PIN_T12 -to ad_si_data[4]
+set_location_assignment PIN_V13 -to ad_si_data[3]
+set_location_assignment PIN_Y14 -to ad_si_data[2]
+set_location_assignment PIN_Y15 -to ad_si_data[1]
+set_location_assignment PIN_V16 -to ad_si_data[0]
+set_location_assignment PIN_AA8 -to ad_sq_data[11]
+set_location_assignment PIN_AA13 -to ad_sq_data[10]
+set_location_assignment PIN_AA9 -to ad_sq_data[9]
+set_location_assignment PIN_Y9 -to ad_sq_data[8]
+set_location_assignment PIN_Y10 -to ad_sq_data[7]
+set_location_assignment PIN_AB13 -to ad_sq_data[6]
+set_location_assignment PIN_AA10 -to ad_sq_data[5]
+set_location_assignment PIN_AA14 -to ad_sq_data[4]
+set_location_assignment PIN_AB12 -to ad_sq_data[3]
+set_location_assignment PIN_AB15 -to ad_sq_data[2]
+set_location_assignment PIN_AA15 -to ad_sq_data[1]
+set_location_assignment PIN_Y16 -to ad_sq_data[0]
+set_location_assignment PIN_U12 -to ad_si_data[9]
+set_location_assignment PIN_N9 -to clk_sys
+set_location_assignment PIN_R6 -to uart_rx[0]
+set_location_assignment PIN_V6 -to uart_rx[1]
+set_location_assignment PIN_M8 -to uart_rx[2]
+set_location_assignment PIN_U6 -to uart_rx[3]
+set_location_assignment PIN_N8 -to uart_rx[4]
+set_location_assignment PIN_P7 -to uart_rx[5]
+set_location_assignment PIN_L7 -to uart_tx[0]
+set_location_assignment PIN_L8 -to uart_tx[1]
+set_location_assignment PIN_K9 -to uart_tx[2]
+set_location_assignment PIN_H8 -to uart_tx[3]
+set_location_assignment PIN_R5 -to irigb_rx
+set_location_assignment PIN_A14 -to pwr_sw_sel
+set_location_assignment PIN_A12 -to key_in[0]
+set_location_assignment PIN_C11 -to key_in[1]
+set_location_assignment PIN_D12 -to key_in[2]
+set_location_assignment PIN_C16 -to key_in[3]
+set_location_assignment PIN_A9 -to key_in[4]
+set_location_assignment PIN_A15 -to key_in[5]
+set_location_assignment PIN_B10 -to key_in[6]
+set_location_assignment PIN_D9 -to key_in[7]
+set_location_assignment PIN_B7 -to key_in[8]
+set_location_assignment PIN_A7 -to key_in[9]
+set_location_assignment PIN_B13 -to key_in[10]
+set_location_assignment PIN_B20 -to key_in[11]
+set_location_assignment PIN_C15 -to key_in[12]
+set_location_assignment PIN_B18 -to key_in[13]
+set_location_assignment PIN_C13 -to key_in[14]
+set_location_assignment PIN_E9 -to flash_holdn
+set_location_assignment PIN_F9 -to flash_csn
+set_location_assignment PIN_E16 -to flash_sck
+set_location_assignment PIN_D13 -to flash_si
+set_location_assignment PIN_H9 -to flash_so
+set_location_assignment PIN_G10 -to ad9785_dclk
+set_location_assignment PIN_AA22 -to ad9785_rst
+set_location_assignment PIN_AB20 -to ad9785_sdio
+set_location_assignment PIN_Y21 -to ad9785_sclk
+set_location_assignment PIN_AB21 -to ad9785_csn
+set_location_assignment PIN_Y22 -to ad9785_if_txen
+set_location_assignment PIN_AB8 -to debug_led[0]
+set_location_assignment PIN_W8 -to debug_led[1]
+# Obsolete assignment in <Version 19.1> "set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top"
+
+set_location_assignment PIN_T20 -to phy_rst
+set_location_assignment PIN_M16 -to phy_link1000
+set_location_assignment PIN_N16 -to phy_link100
+set_location_assignment PIN_N19 -to rgmii_rxclk
+set_location_assignment PIN_M22 -to rgmii_rxdv
+set_location_assignment PIN_N20 -to rgmii_rxdata[0]
+set_location_assignment PIN_P22 -to rgmii_rxdata[1]
+set_location_assignment PIN_N21 -to rgmii_rxdata[2]
+set_location_assignment PIN_K22 -to rgmii_rxdata[3]
+set_location_assignment PIN_L22 -to rgmii_txclk
+set_location_assignment PIN_R15 -to rgmii_txen
+set_location_assignment PIN_P17 -to rgmii_txdata[0]
+set_location_assignment PIN_R16 -to rgmii_txdata[1]
+set_location_assignment PIN_P18 -to rgmii_txdata[2]
+set_location_assignment PIN_T19 -to rgmii_txdata[3]
+# Obsolete assignment in <Version 19.1> "set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top"
+
+# Obsolete assignment in <Version 19.1> "set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top"
+
+# Obsolete assignment in <Version 19.1> "set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top"
+
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH d19012_test -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME d19012_test -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id d19012_test
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME d19012_test -section_id d19012_test
+set_global_assignment -name EDA_TEST_BENCH_FILE "C:/Users/huangjie/Desktop/Logic/sim/tb/d19012_test.v" -section_id d19012_test
+set_global_assignment -name EDA_TEST_BENCH_FILE "C:/Users/huangjie/Desktop/Logic/sim/tb/sim_falsh_top.v" -section_id d19012_test
+set_global_assignment -name EDA_TEST_BENCH_FILE "C:/Users/huangjie/Desktop/Logic/sim/tb/sim_clk_mdl.v" -section_id d19012_test
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_SETUP_SCRIPT simulation/BFMPrj_run_msim_rtl_verilog.do -section_id eda_simulation
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk_sys
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_rx[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_rx[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_rx[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_rx[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_rx[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_rx[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_tx[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_tx[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_tx[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to uart_tx[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to irigb_rx
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to pwr_sw_sel
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_in[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to flash_holdn
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to flash_csn
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to flash_sck
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to flash_si
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to flash_so
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad9785_dclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad9785_rst
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad9785_sdio
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad9785_sclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad9785_csn
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad9785_if_txen
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_si_data[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ad_sq_data[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to debug_led[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to debug_led[1]
+set_instance_assignment -name IO_STANDARD "2.5-V" -to phy_rst
+set_instance_assignment -name IO_STANDARD "2.5-V" -to phy_link1000
+set_instance_assignment -name IO_STANDARD "2.5-V" -to phy_link100
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_rxclk
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_rxdv
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_rxdata[0]
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_rxdata[1]
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_rxdata[2]
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_rxdata[3]
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_txclk
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_txen
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_txdata[0]
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_txdata[1]
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_txdata[2]
+set_instance_assignment -name IO_STANDARD "2.5-V" -to rgmii_txdata[3]
+set_global_assignment -name VERILOG_FILE ../../src/d19013_sec_ctrl_top.v
+set_global_assignment -name VERILOG_FILE ../../src/iqmode/iqmodem_pcm.v
+set_global_assignment -name AHDL_FILE bitsyner_new/code_type_rb.tdf
+set_global_assignment -name AHDL_FILE bitsyner_new/bitsyner_new.tdf
+set_global_assignment -name AHDL_FILE bitsyner_new/bit_nco.tdf
+set_global_assignment -name AHDL_FILE code_type_en.tdf
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/internet_rx_ctrl.v
+set_global_assignment -name QIP_FILE ../../ip/Udp_fifo_32_8/Udp_fifo_32_8.qip
+set_global_assignment -name QIP_FILE ../../ip/clk_ctrl_4to1/synthesis/clkctr.qip
+set_global_assignment -name QIP_FILE ../../ip/clk_ctrl_1o1/synthesis/clkctr_s.qip
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/NetParadefine.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/udp_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/UDP_Packet_Sender.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/UDP_Packet_Receiver.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/pll_internet_contro.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/internet_tx_ctrl.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/Internet_rx_byte.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/IGMPv3_Join_Group.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/EthernetModTop.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/EthernetManage.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/EthernetConfig.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/ethernet_pro_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/ARP_Stack.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/ARP_Packet_Sender.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/udp/ARP_Packet_Receiver.v
+set_global_assignment -name VERILOG_FILE ../../src/iqmode/iqmodem_dy.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/cb_baud_gen.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/slr_top/slr_rx_dat.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/slr_top/small_loop_rx_ctrl.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/slr_top/slr_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/slr_top/slr_rx_cfg.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/cb_sync.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/cb_cross_bus.v
+set_global_assignment -name SDC_FILE d19012_sec_ctrl.sdc
+set_global_assignment -name QIP_FILE ../../ip/sys_clk125m_gen/sys_clk125m_gen.qip
+set_global_assignment -name QIP_FILE ../../ip/sys_clk60m_gen/sys_clk60m_gen/sys_clk60m_gen.qip
+set_global_assignment -name QIP_FILE ../../ip/sdpram_d4kw8/sdpram_d4kw8.qip
+set_global_assignment -name QIP_FILE ../../ip/rom/rom.qip
+set_global_assignment -name QIP_FILE ../../ip/flash_fifo_512x8/flash_fifo_512x8.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d512w72_st/fifo_d512w72_st.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d512w16_fwft/fifo_d512w16_fwft.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d256w48_fwft/fifo_d256w48_fwft.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d256w20_st/fifo_d256w20_st.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d128w256_fwft/fifo_d128w256_fwft.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d128w144_fwft/fifo_d128w144_fwft.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d4kw16_st/fifo_d4kw16_st.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d4kw8_st/fifo_d4kw8_st.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d1kw32_fwft/fifo_d1kw32_fwft.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d1kw8_st/fifo_d1kw8_st.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d1kw8_fwft/fifo_d1kw8_fwft.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_512x8_1/FIFO_512X8.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_512x8/fifo_512x8.qip
+set_global_assignment -name VERILOG_FILE ../../src/d19012_sec_ctrl_top.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_transfer_top.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_tx/pc_tx_wrapper.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_tx/pc_tx_status.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_tx/pc_tx_resp.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_tx/pc_tx_ins.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_tx/pc_tx_frame.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_tx/pc_tx_cfg.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_rx/pc_rx_wrapper.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_rx/pc_rx_test.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_rx/pc_rx_instruct.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_rx/pc_rx_deframe.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_rx/pc_rx_cfg.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/pc_rx/pc_rx_arbit.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/lr_mode/pc_rm_deframe.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/lr_mode/pc_ch_sel.v
+set_global_assignment -name VERILOG_FILE ../../src/pc_transfer_top/lr_mode/lrmode_ctrl_wrapper.v
+set_global_assignment -name VERILOG_FILE ../../src/inter_cfg_top/inter_cfg_top.v
+set_global_assignment -name VERILOG_FILE ../../src/inter_cfg_top/inter_cfg_reg.v
+set_global_assignment -name VERILOG_FILE ../../src/inter_cfg_top/inter_cfg_init.v
+set_global_assignment -name VERILOG_FILE ../../src/instruct_txctrl_top/inst_tx2pcm.v
+set_global_assignment -name VERILOG_FILE ../../src/instruct_txctrl_top/inst_tx2dy.v
+set_global_assignment -name VERILOG_FILE ../../src/instruct_txctrl_top/inst_tx_top.v
+set_global_assignment -name VERILOG_FILE ../../src/instruct_txctrl_top/inst_tx_ctrl.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/dev_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/time_top/time_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/time_top/time_ok_out.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/time_top/time_code_combination.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/time_top/NewPPS_1sMod.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/time_top/IRIGBRxMod_contrl.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/time_top/Irig_b_time_to_seconds.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/time_top/Irig_b_rx.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/time_top/Irig_b_pluse.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/power_monitor_top/power_state.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/power_monitor_top/monitor_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/power_monitor_top/monitor_rx_ctrl.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/key_top/key_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/key_top/key_deframe.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/flash_user_inst.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/flash_user_init.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/flash_user_cfg.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/flash_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/flash_ctrl.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/flash_arbit.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/spi/spi_top.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/spi/spi_drv.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/spi/spi_ctrl.v
+set_global_assignment -name VERILOG_FILE ../../src/dev_top/flash_top/spi/spi_baud_gen.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/uart/uart_txctrl.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/uart/uart_tx.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/uart/uart_top.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/uart/uart_rx.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/uart/uart_baud.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/sdpbram_gen.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/fifo_gen.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/cb_line_filter.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/cb_edge_cap.v
+set_global_assignment -name VERILOG_FILE ../../src/common_block/cb_crc32.v
+set_global_assignment -name VERILOG_FILE ../../src/board_top/sys_rst_gen.v
+set_global_assignment -name VERILOG_FILE ../../src/board_top/board_top.v
+set_global_assignment -name QIP_FILE IQModemNCO_PCM/synthesis/IQModemNCO_PCM.qip
+set_global_assignment -name QIP_FILE NCODY_DY/synthesis/NCODY_DY.qip
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/MUL8_32.qip
+set_global_assignment -name VHDL_FILE RTL/IQModem/3add32/add32_3.vhd
+set_global_assignment -name QIP_FILE RTL/IQModem/3add32/add32_3.qip
+set_global_assignment -name VHDL_FILE RTL/IQModem/2add32/add32_2.vhd
+set_global_assignment -name QIP_FILE RTL/IQModem/2add32/add32_2.qip
+set_global_assignment -name QIP_FILE PCM_NCO_DATA/synthesis/PCM_NCO_DATA.qip
+set_global_assignment -name QSYS_FILE NCO_pcm_data.qsys
+set_global_assignment -name QIP_FILE NCODY/synthesis/NCODY.qip
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/CLK_SAMPLE_GENERATOR.tdf
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/AddSub32.qip
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/BPSKNCO/DelteThetaModP.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/BPSKNCO/BSPKDelteThetaFir.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/BPSKNCO/BPSKLocalNCO.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQSoundDemodem/SeriesIntegralMod.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQSoundDemodem/MultSubcarrierDetMod.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQSoundDemodem/IQDemodemSoundPCMBitSyn.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQSoundDemodem/IQDemodemSoundPCM.v
+set_global_assignment -name QIP_FILE AlteraIP/NCO/IQDemodemNCOSound/synthesis/IQDemodemNCOSound.qip
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/MUL10_12_S.qip
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/ADD32_S.qip
+set_global_assignment -name QIP_FILE AlteraIP/CIC/CICSoundSet/synthesis/CICSoundSet.qip
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQSoundDemodem/IQSoundDemodemTop.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQSoundDemodem/IQSoundDemodem.v
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/dely_ram.tdf
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/3add32.tdf
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/2add32.tdf
+set_global_assignment -name QIP_FILE AlteraIP/CIC/cic5/synthesis/cic5.qip
+set_global_assignment -name QIP_FILE AlteraIP/CIC/cic3/synthesis/cic3.qip
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/acc33.tdf
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/code_type_rb.tdf
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/bit_nco.tdf
+set_global_assignment -name QIP_FILE RTL/IQDemodem/3add32.qip
+set_global_assignment -name QIP_FILE RTL/IQDemodem/2add32.qip
+set_global_assignment -name QIP_FILE mcu/synthesis/mcu.qip
+set_global_assignment -name QIP_FILE AlteraIP/CIC/CICRxSet/synthesis/CICRxSet.qip
+set_global_assignment -name VERILOG_FILE RTL/IQModem/DelteThetaMod.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/FIR/fir_0R1/fir_0R1.v
+set_global_assignment -name VERILOG_FILE RTL/OtherRTL/UART_Tx.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/framer/framer_ankong.v
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/MUL4_32.qip
+set_global_assignment -name VERILOG_FILE RTL/OtherRTL/LEDDrive.v
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/xyz.tdf
+set_global_assignment -name QIP_FILE RTL/IQDemodem/mult_10x12.qip
+set_global_assignment -name QIP_FILE RTL/IQDemodem/dely_ram.qip
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/iir_fzb_fsk.tdf
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/ADD32.qip
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/jsj_fzb_jt.tdf
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/jsj_ad9361.tdf
+set_global_assignment -name AHDL_FILE "RTL/IQDemodem/iir_fsk _c.tdf"
+set_global_assignment -name AHDL_FILE "RTL/IQDemodem/fsk_acc .tdf"
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/filter_acc.tdf
+set_global_assignment -name AHDL_FILE RTL/IQDemodem/cordic.tdf
+set_global_assignment -name QIP_FILE AlteraIP/NCO/IQModemNCO/synthesis/IQModemNCO.qip
+set_global_assignment -name AHDL_FILE RTL/IQModem/source/gd_source.tdf
+set_global_assignment -name VERILOG_FILE RTL/McuUart/McuUartTop.v
+set_global_assignment -name VERILOG_FILE RTL/OtherRTL/SysRstMod.v
+set_global_assignment -name QIP_FILE AlteraIP/MyPLL.qip
+set_global_assignment -name VERILOG_FILE BFMPrj.v
+set_global_assignment -name VERILOG_FILE RTL/IQModem/IQModem.v
+set_global_assignment -name QIP_FILE AlteraIP/DDIO/ddio_in.qip
+set_global_assignment -name QIP_FILE AlteraIP/DDIO/ddio_out.qip
+set_global_assignment -name QIP_FILE AlteraIP/NCO/nco_if_mixer/synthesis/nco_if_mixer.qip
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQDemodem.v
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/MUL10_12.qip
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/MUL32.qip
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/MUL32_Para.qip
+set_global_assignment -name SIP_FILE AlteraIP/FIR/FIR8M_LP.sip
+set_global_assignment -name QIP_FILE AlteraIP/FIFO/PcmUartTx.qip
+set_global_assignment -name VERILOG_FILE RTL/OtherRTL/PcmUartTxTop.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQSoundDemodem/IQSoundDemodemDataAve.v
+set_global_assignment -name VERILOG_FILE RTL/IQDemodem/IQSoundDemodem/IQSoundDemodemDataAveHalf.v
+set_global_assignment -name QIP_FILE AlteraIP/FIFO/IntegralFifo.qip
+set_global_assignment -name QIP_FILE AlteraIP/ConstantAve.qip
+set_global_assignment -name QIP_FILE AlteraIP/ConstantInterTime.qip
+set_global_assignment -name QIP_FILE AlteraIP/DemodemModeCons.qip
+set_global_assignment -name VHDL_FILE DA9785/wr_da9785.vhd
+set_global_assignment -name VERILOG_FILE RTL/IQModem/IQModem_DY.v
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/MUL32_DY.qip
+set_global_assignment -name QIP_FILE AlteraIP/Arithmetic/cons_state.qip
+set_global_assignment -name QIP_FILE DAPLL.qip
+set_global_assignment -name SIP_FILE DAPLL.sip
+set_global_assignment -name VERILOG_FILE pcm_nco_out.v
+set_global_assignment -name QIP_FILE PCM_FIFO.qip
+set_global_assignment -name VERILOG_FILE pcm_FIFO_out.v
+set_global_assignment -name VERILOG_FILE Verilog1_DY_test.v
+set_global_assignment -name QIP_FILE RTL/IQModem/FIFO_DY.qip
+set_global_assignment -name QIP_FILE RTL/IQModem/FIFO_PCM.qip
+set_global_assignment -name VERILOG_FILE DY_FIFO_out.v
+set_global_assignment -name QIP_FILE ../../ip/fifo_d128w81_fwft/fifo_d128w81_fwft.qip
+set_global_assignment -name CDF_FILE output_files/Chain1.cdf
+set_global_assignment -name QIP_FILE ../../ip/tris_mac/TriSEthIP.qip
+set_global_assignment -name SIP_FILE ../../ip/tris_mac/TriSEthIP.sip
+set_global_assignment -name QIP_FILE ../../ip/sdpram_d16kw8_d4kw32/sdpram_d16kw8_d4kw32.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d512_w32/fifo_d512_w32.qip
+set_global_assignment -name QIP_FILE ../../ip/pll_internet/pll_internet.qip
+set_global_assignment -name SIP_FILE ../../ip/pll_internet/pll_internet.sip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d1kw32_d4kw8_st/fifo_d1kw32_d4kw8_st.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d512_w16_st/fifo_d512_w16_st.qip
+set_global_assignment -name QIP_FILE ../../ip/fifo_d512w32_st/fifo_d512w32_st.qip
+set_global_assignment -name QIP_FILE ../../ip/sdpram_d1kw32_d4kw8/sdpram_d1kw32_d4kw8.qip
+set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to "dev_top:u_dev_top|key_top:u_key_top|clk_sys" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[26]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[27]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[28]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[29]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[30]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[24] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[31]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[25] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[26] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[27] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[28] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[29] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[30] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[31] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[32] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[33] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[34] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[35] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[36] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[37] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[38] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[39] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[40] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[41] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[42] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[43] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[44] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[45] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[46] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[47] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[48] -to "dev_top:u_dev_top|key_top:u_key_top|key_data_valid" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[49] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[50] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[51] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[52] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[53] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[54] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[55] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[56] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[57] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[58] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[59] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[60] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[61] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[62] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[63] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[64] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[65] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[66] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[67] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[68] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[69] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[70] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[71] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[72] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[73] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[74] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[75] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[76] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[77] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[78] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[79] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[80] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[81] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct_valid" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[82] -to "dev_top:u_dev_top|key_top:u_key_top|key_lr_status" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[83] -to "dev_top:u_dev_top|key_top:u_key_top|key_status_valid" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[16]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[17]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[18]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[19]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[20]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[21]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[22]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[23]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[24]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[25]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[26]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[27]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[28]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[29]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[30]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[24] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[31]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[25] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[26] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[27] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[28] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[29] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[30] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[31] -to "dev_top:u_dev_top|key_top:u_key_top|cfg_key_filter_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[32] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[33] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[34] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[35] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[36] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[37] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[38] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[39] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[40] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[41] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[42] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[43] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[44] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[45] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[46] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[47] -to "dev_top:u_dev_top|key_top:u_key_top|key_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[48] -to "dev_top:u_dev_top|key_top:u_key_top|key_data_valid" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[49] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[50] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[51] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[52] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[53] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[54] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[55] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[56] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[57] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[58] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[59] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[60] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[61] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[62] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[63] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[64] -to "dev_top:u_dev_top|key_top:u_key_top|key_in[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[65] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[66] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[67] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[68] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[12]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[69] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[13]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[70] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[14]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[71] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[15]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[72] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[73] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[74] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[75] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[76] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[77] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[78] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[79] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[80] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[81] -to "dev_top:u_dev_top|key_top:u_key_top|key_instruct_valid" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[82] -to "dev_top:u_dev_top|key_top:u_key_top|key_lr_status" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[83] -to "dev_top:u_dev_top|key_top:u_key_top|key_status_valid" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_RAM_BLOCK_TYPE=AUTO" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=84" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=84" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=84" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334528" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=273" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=128" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INCREMENTAL_ROUTING=1" -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=128" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/ch_test_auto_stripped.stp

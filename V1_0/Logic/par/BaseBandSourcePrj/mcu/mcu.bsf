@@ -1,0 +1,197 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 480 616)
+	(text "mcu" (rect 228 -1 245 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 600 20 612)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clk_0" (rect 0 0 21 12)(font "Arial" (font_size 8)))
+		(text "clk_0" (rect 4 61 34 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 208 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "reset_n" (rect 0 0 30 12)(font "Arial" (font_size 8)))
+		(text "reset_n" (rect 4 101 46 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 208 112)(line_width 1))
+	)
+	(port
+		(pt 0 392)
+		(input)
+		(text "in_port_to_the_pio_spi_di" (rect 0 0 102 12)(font "Arial" (font_size 8)))
+		(text "in_port_to_the_pio_spi_di" (rect 4 381 154 392)(font "Arial" (font_size 8)))
+		(line (pt 0 392)(pt 208 392)(line_width 1))
+	)
+	(port
+		(pt 0 512)
+		(input)
+		(text "rxd_to_the_uart_0" (rect 0 0 75 12)(font "Arial" (font_size 8)))
+		(text "rxd_to_the_uart_0" (rect 4 501 106 512)(font "Arial" (font_size 8)))
+		(line (pt 0 512)(pt 208 512)(line_width 1))
+	)
+	(port
+		(pt 0 568)
+		(input)
+		(text "rxd_to_the_uart" (rect 0 0 64 12)(font "Arial" (font_size 8)))
+		(text "rxd_to_the_uart" (rect 4 557 94 568)(font "Arial" (font_size 8)))
+		(line (pt 0 568)(pt 208 568)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(output)
+		(text "out_port_from_the_pio_addr[7..0]" (rect 0 0 136 12)(font "Arial" (font_size 8)))
+		(text "out_port_from_the_pio_addr[7..0]" (rect 4 141 196 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 208 152)(line_width 3))
+	)
+	(port
+		(pt 0 192)
+		(output)
+		(text "out_port_from_the_pio_clk" (rect 0 0 109 12)(font "Arial" (font_size 8)))
+		(text "out_port_from_the_pio_clk" (rect 4 181 154 192)(font "Arial" (font_size 8)))
+		(line (pt 0 192)(pt 208 192)(line_width 1))
+	)
+	(port
+		(pt 0 232)
+		(output)
+		(text "out_port_from_the_pio_ctr_out[7..0]" (rect 0 0 147 12)(font "Arial" (font_size 8)))
+		(text "out_port_from_the_pio_ctr_out[7..0]" (rect 4 221 214 232)(font "Arial" (font_size 8)))
+		(line (pt 0 232)(pt 208 232)(line_width 3))
+	)
+	(port
+		(pt 0 272)
+		(output)
+		(text "out_port_from_the_pio_data[31..0]" (rect 0 0 139 12)(font "Arial" (font_size 8)))
+		(text "out_port_from_the_pio_data[31..0]" (rect 4 261 202 272)(font "Arial" (font_size 8)))
+		(line (pt 0 272)(pt 208 272)(line_width 3))
+	)
+	(port
+		(pt 0 312)
+		(output)
+		(text "out_port_from_the_pio_reset" (rect 0 0 119 12)(font "Arial" (font_size 8)))
+		(text "out_port_from_the_pio_reset" (rect 4 301 166 312)(font "Arial" (font_size 8)))
+		(line (pt 0 312)(pt 208 312)(line_width 1))
+	)
+	(port
+		(pt 0 352)
+		(output)
+		(text "out_port_from_the_pio_spi_clk" (rect 0 0 126 12)(font "Arial" (font_size 8)))
+		(text "out_port_from_the_pio_spi_clk" (rect 4 341 178 352)(font "Arial" (font_size 8)))
+		(line (pt 0 352)(pt 208 352)(line_width 1))
+	)
+	(port
+		(pt 0 432)
+		(output)
+		(text "out_port_from_the_pio_spi_do" (rect 0 0 125 12)(font "Arial" (font_size 8)))
+		(text "out_port_from_the_pio_spi_do" (rect 4 421 172 432)(font "Arial" (font_size 8)))
+		(line (pt 0 432)(pt 208 432)(line_width 1))
+	)
+	(port
+		(pt 0 472)
+		(output)
+		(text "out_port_from_the_pio_spi_le" (rect 0 0 121 12)(font "Arial" (font_size 8)))
+		(text "out_port_from_the_pio_spi_le" (rect 4 461 172 472)(font "Arial" (font_size 8)))
+		(line (pt 0 472)(pt 208 472)(line_width 1))
+	)
+	(port
+		(pt 0 528)
+		(output)
+		(text "txd_from_the_uart_0" (rect 0 0 87 12)(font "Arial" (font_size 8)))
+		(text "txd_from_the_uart_0" (rect 4 517 118 528)(font "Arial" (font_size 8)))
+		(line (pt 0 528)(pt 208 528)(line_width 1))
+	)
+	(port
+		(pt 0 584)
+		(output)
+		(text "txd_from_the_uart" (rect 0 0 76 12)(font "Arial" (font_size 8)))
+		(text "txd_from_the_uart" (rect 4 573 106 584)(font "Arial" (font_size 8)))
+		(line (pt 0 584)(pt 208 584)(line_width 1))
+	)
+	(drawing
+		(text "clk_0_clk_in" (rect 136 43 344 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 213 67 444 144)(font "Arial" (color 0 0 0)))
+		(text "clk_0_clk_in_reset" (rect 98 83 304 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 213 107 468 224)(font "Arial" (color 0 0 0)))
+		(text "pio_addr_external_connection" (rect 35 123 238 259)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 147 462 304)(font "Arial" (color 0 0 0)))
+		(text "pio_clk_external_connection" (rect 45 163 252 339)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 187 462 384)(font "Arial" (color 0 0 0)))
+		(text "pio_ctr_out_external_connection" (rect 20 203 226 419)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 227 462 464)(font "Arial" (color 0 0 0)))
+		(text "pio_data_external_connection" (rect 36 243 240 499)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 267 462 544)(font "Arial" (color 0 0 0)))
+		(text "pio_reset_external_connection" (rect 31 283 236 579)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 307 462 624)(font "Arial" (color 0 0 0)))
+		(text "pio_spi_clk_external_connection" (rect 20 323 226 659)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 347 462 704)(font "Arial" (color 0 0 0)))
+		(text "pio_spi_di_external_connection" (rect 26 363 232 739)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 387 462 784)(font "Arial" (color 0 0 0)))
+		(text "pio_spi_do_external_connection" (rect 22 403 224 819)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 427 462 864)(font "Arial" (color 0 0 0)))
+		(text "pio_spi_le_external_connection" (rect 26 443 232 899)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 213 467 462 944)(font "Arial" (color 0 0 0)))
+		(text "uart_0_external_connection" (rect 48 483 252 979)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "rxd" (rect 213 507 444 1024)(font "Arial" (color 0 0 0)))
+		(text "txd" (rect 213 523 444 1056)(font "Arial" (color 0 0 0)))
+		(text "uart_external_connection" (rect 63 539 270 1091)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "rxd" (rect 213 563 444 1136)(font "Arial" (color 0 0 0)))
+		(text "txd" (rect 213 579 444 1168)(font "Arial" (color 0 0 0)))
+		(text " mcu " (rect 459 600 948 1210)(font "Arial" ))
+		(line (pt 208 32)(pt 272 32)(line_width 1))
+		(line (pt 272 32)(pt 272 600)(line_width 1))
+		(line (pt 208 600)(pt 272 600)(line_width 1))
+		(line (pt 208 32)(pt 208 600)(line_width 1))
+		(line (pt 209 52)(pt 209 76)(line_width 1))
+		(line (pt 210 52)(pt 210 76)(line_width 1))
+		(line (pt 209 92)(pt 209 116)(line_width 1))
+		(line (pt 210 92)(pt 210 116)(line_width 1))
+		(line (pt 209 132)(pt 209 156)(line_width 1))
+		(line (pt 210 132)(pt 210 156)(line_width 1))
+		(line (pt 209 172)(pt 209 196)(line_width 1))
+		(line (pt 210 172)(pt 210 196)(line_width 1))
+		(line (pt 209 212)(pt 209 236)(line_width 1))
+		(line (pt 210 212)(pt 210 236)(line_width 1))
+		(line (pt 209 252)(pt 209 276)(line_width 1))
+		(line (pt 210 252)(pt 210 276)(line_width 1))
+		(line (pt 209 292)(pt 209 316)(line_width 1))
+		(line (pt 210 292)(pt 210 316)(line_width 1))
+		(line (pt 209 332)(pt 209 356)(line_width 1))
+		(line (pt 210 332)(pt 210 356)(line_width 1))
+		(line (pt 209 372)(pt 209 396)(line_width 1))
+		(line (pt 210 372)(pt 210 396)(line_width 1))
+		(line (pt 209 412)(pt 209 436)(line_width 1))
+		(line (pt 210 412)(pt 210 436)(line_width 1))
+		(line (pt 209 452)(pt 209 476)(line_width 1))
+		(line (pt 210 452)(pt 210 476)(line_width 1))
+		(line (pt 209 492)(pt 209 532)(line_width 1))
+		(line (pt 210 492)(pt 210 532)(line_width 1))
+		(line (pt 209 548)(pt 209 588)(line_width 1))
+		(line (pt 210 548)(pt 210 588)(line_width 1))
+		(line (pt 0 0)(pt 480 0)(line_width 1))
+		(line (pt 480 0)(pt 480 616)(line_width 1))
+		(line (pt 0 616)(pt 480 616)(line_width 1))
+		(line (pt 0 0)(pt 0 616)(line_width 1))
+	)
+)

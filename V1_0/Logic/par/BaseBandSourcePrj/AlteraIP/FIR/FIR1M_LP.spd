@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="FIR1M_LP_sim/dspba_library_package.vhd" type="VHDL" />
+ <file path="FIR1M_LP_sim/dspba_library.vhd" type="VHDL" />
+ <file path="FIR1M_LP_sim/altera_avalon_sc_fifo.v" type="VERILOG" />
+ <file path="FIR1M_LP_sim/auk_dspip_math_pkg_hpfir.vhd" type="VHDL" />
+ <file path="FIR1M_LP_sim/auk_dspip_lib_pkg_hpfir.vhd" type="VHDL" />
+ <file
+   path="FIR1M_LP_sim/auk_dspip_avalon_streaming_controller_hpfir.vhd"
+   type="VHDL" />
+ <file
+   path="FIR1M_LP_sim/auk_dspip_avalon_streaming_sink_hpfir.vhd"
+   type="VHDL" />
+ <file
+   path="FIR1M_LP_sim/auk_dspip_avalon_streaming_source_hpfir.vhd"
+   type="VHDL" />
+ <file path="FIR1M_LP_sim/auk_dspip_roundsat_hpfir.vhd" type="VHDL" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_rtl.vhd" type="VHDL" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_ast.vhd" type="VHDL" />
+ <file path="FIR1M_LP_sim/FIR1M_LP.vhd" type="VHDL" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_nativelink.tcl" type="OTHER" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_msim.tcl" type="OTHER" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_tb.vhd" type="VHDL" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_mlab.m" type="OTHER" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_model.m" type="OTHER" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_coef_int.txt" type="OTHER" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_input.txt" type="OTHER" />
+ <file path="FIR1M_LP_sim/FIR1M_LP_param.txt" type="OTHER" />
+ <topLevel name="FIR1M_LP" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

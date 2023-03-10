@@ -1,0 +1,393 @@
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], add_sub, clock, aclr, clkn)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ONE_INPUT_IS_CONSTANT, LPM_PIPELINE, MAXIMIZE_SPEED)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION lpm_abs (data[LPM_WIDTH-1..0])
+   WITH (LPM_WIDTH, ADDERTYPE)
+   RETURNS (result[LPM_WIDTH-1..0], overflow);
+FUNCTION lpm_counter (data[LPM_WIDTH-1..0], clock, clk_en, cnt_en, updown, cin, aclr, aset, aconst, aload, sclr, sset, sconst, sload)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_MODULUS, LPM_AVALUE, LPM_SVALUE, CARRY_CNT_EN, LABWIDE_SCLR)
+   RETURNS (q[LPM_WIDTH-1..0], cout, eq[15..0]);
+FUNCTION lpm_shiftreg (data[LPM_WIDTH-1..0], clock, enable, shiftin, load, sclr, sset, aclr, aset)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION bit_nco(clk_sys,nco_f[31..0])
+   RETURNS (result[32..0],bs,qpsk_bs);
+FUNCTION mul16x16(clock,dataa[15..0],datab[15..0])
+   RETURNS (result[31..0]);
+FUNCTION add32_2(clock,data0x[31..0],data1x[31..0])
+   RETURNS (result[31..0]);
+FUNCTION add32_3(clock,data0x[31..0],data1x[31..0],data2x[31..0])
+   RETURNS (result[31..0]);
+FUNCTION code_type(clk_sys,pcm_d,rb,plus_bit,pcm_type[3..0])
+   RETURNS (bs,bd);
+
+
+SUBDESIGN bitsyner_new
+(
+	clk_sys				: INPUT;
+	clk_samp				: INPUT;
+	pcm_in				: INPUT;
+	nco_f[31..0]		: input;
+	pcm_type[3..0]		: input;
+	update_n				: input;
+   modem_mod[2..0]   : input;
+	bs						: OUTPUT;
+	bd						: OUTPUT;
+)
+VARIABLE
+	pcm_pd			:lpm_dff WITH (LPM_WIDTH=1);
+	pcm_fir			:lpm_shiftreg WITH (LPM_WIDTH=4);
+	pcm_q_pd			:lpm_dff WITH (LPM_WIDTH=1);
+	pcm_q_fir		:lpm_shiftreg WITH (LPM_WIDTH=4);
+	code_nco		:bit_nco;
+	code_nco_f		:bit_nco;
+	code_turn_a		:code_type;
+	code_turn_b		:code_type;
+	det_f[31..0]	:node;
+	nco_f_n[31..0]	:node;
+	freq[31..0]		:node;
+	freq_f[31..0]	:node;
+	del1_jf_plus	:dff;
+	del2_jf_plus	:dff;
+	del3_jf_plus	:dff;
+	del4_jf_plus	:dff;
+	del5_jf_plus	:dff;
+	del6_jf_plus	:dff;
+	del7_jf_plus	:dff;
+	det_theta[31..0]	:node;
+	det_1_theta[31..0]	:node;
+	f_err_pj_c		:lpm_counter WITH (LPM_WIDTH=4);
+	code_cont		:lpm_counter WITH (LPM_WIDTH=8);
+	max_det_m[31..0]	:node;
+
+	a_err_pj_c		:lpm_counter WITH (LPM_WIDTH=10);
+	nco_data[31..0]	:node;
+	nco_data_f[31..0]	:node;
+	rb					:node;
+	del_rb			:dffe;
+	plus_bit_n		:node;
+	plus_bit			:dffe;
+	del_plus_bit	:dffe;
+	del_pcm_pd		:dffe;
+	del_pcm_apd		:dffe;
+	del_pcm_q_pd	:dffe;
+	del_pcm_q_apd	:dffe;
+	jmp_plus			:node;
+	det_theta_r[31..0]	:dffe;
+	del_turn_plus	:dffe;
+	del_turn_plus1	:dffe;
+	del_turn_plus2	:dffe;
+	err_ot			:lpm_dff WITH (LPM_WIDTH=32);
+   mod_mod[2..0]    :node;
+	det_f_n[31..0]	   :node;
+	det_freq_n[31..0]	:node;
+	det_freq[31..0]	:dffe;
+	pcm_1d			:DFFE;
+	pcm_2d			:DFFE;
+	abs_pd[12..0]	:dffe;
+	abs_pcm_n[25..0]	:node;
+	abs_pcm_c[25..0]	:node;
+	abs_pcm_b[25..0]	:dffe;
+	abs_pcm_pj[15..0]	:dffe;
+	det_theta_f_r[31..0] :dffe;
+	det_theta_1r[31..0]	:dffe;
+	det_theta_2r[31..0]	:dffe;
+	code_cont_ar[8..0]	:dffe;
+	code_cont_r[8..0]	:dffe;
+	det_f_i_n[31..0]	:node;
+	f_err_b_n[31..0]	:node;
+	f_err_c[31..0]		:node;
+	f_err_a[31..0]		:dffe;
+	f_err[31..0]		:dffe;
+
+	buf_qpsk_d[1..0]	:dffe;
+	qpsk_bs				:node;
+	del_qpsk_bs			:dffe;
+	qpsk_1d				:node;
+	qpsk_2d				:node;
+	
+	det_f_jf[31..0]		:dffe;
+	
+	det_theta_a[31..0]	:node;
+	det_theta_b[31..0]	:node;
+	det_theta_c[31..0]	:dffe;
+	det_theta_d[31..0]	:node;
+
+BEGIN
+-------pcm filier----
+	pcm_fir.shiftin=pcm_in;
+	pcm_fir.enable=clk_samp;
+	pcm_fir.clock=clk_sys;
+
+	pcm_pd.data[0]=pcm_pd.q[0];
+	pcm_pd.enable=clk_samp;
+	pcm_pd.sset=pcm_fir.q[0] and pcm_fir.q[1];-- and pcm_fir.q[2] and pcm_fir.q[3];
+	pcm_pd.sclr=!(pcm_fir.q[0] or pcm_fir.q[1]);-- or pcm_fir.q[2] or pcm_fir.q[3]);
+	pcm_pd.clock=clk_sys;
+-------bit nco------------
+	if ((!pcm_type[3]) and pcm_type[2])==1 then
+				nco_f_n[31..1]=nco_f[30..0];
+				nco_f_n[0]=GND;
+		else    nco_f_n[31..1]=nco_f[31..1];
+		        nco_f_n[0]=GND;
+	end if;
+	
+	code_nco.clk_sys=clk_sys;
+	code_nco.nco_f[31..0]=freq[31..0];
+	nco_data[31..0]=code_nco.result[31..0];
+	rb=code_nco.bs;
+
+	del_rb=rb;
+	del_rb.clk=clk_sys;
+
+	plus_bit_n=rb and !del_rb;
+	plus_bit=plus_bit_n;
+	plus_bit.clk=clk_sys;
+
+	del_plus_bit=plus_bit;
+	del_plus_bit.clk=clk_sys;
+
+----------------------------
+	code_nco_f.clk_sys=clk_sys;
+	code_nco_f.nco_f[31..0]=freq_f[31..0];
+	nco_data_f[31..0]=code_nco_f.result[31..0];
+-------THETA error PJ---------------
+	del_pcm_apd=pcm_pd.q[0];
+	del_pcm_apd.clk=clk_sys;
+	del_pcm_pd=del_pcm_apd;
+	del_pcm_pd.clk=clk_sys;
+	jmp_plus=del_pcm_apd xor pcm_pd.q[0];
+
+	del_pcm_q_apd=pcm_q_pd.q[0];
+	del_pcm_q_apd.clk=clk_sys;
+	del_pcm_q_pd=del_pcm_q_apd;
+	del_pcm_q_pd.clk=clk_sys;
+
+	if plus_bit==VCC then err_ot.data[31..0]=det_theta_d[31..0];
+			else  err_ot.data[31..0]=!nco_data[31..0];		--!err[31..0];
+	end if;
+	err_ot.enable=(del_turn_plus or jmp_plus) or (plus_bit or del_plus_bit);		--del_turn_plus1;
+	err_ot.sclr=del_turn_plus or del_plus_bit;		--1;
+	err_ot.clock=clk_sys;
+-------Det Theta -----------
+	det_theta_r[31..0]=!nco_data_f[31..0];
+	det_theta_r[31..0].ena=jmp_plus;
+	det_theta_r[31..0].clk=clk_sys;
+
+	del_turn_plus=jmp_plus;		-- and err_pj_c.cout;
+	del_turn_plus.clk=clk_sys;
+	
+	del_turn_plus1=del_turn_plus;
+	del_turn_plus1.clk=clk_sys;
+	
+	del_turn_plus2=del_turn_plus1;
+	del_turn_plus2.clk=clk_sys;
+	
+
+	det_theta_a[31..25]=det_theta_r[31];			--/2^7
+	det_theta_a[24..0]=det_theta_r[31..7];
+	
+	det_theta_b[31..0]=det_theta_a[31..0]+det_theta_c[31..0];
+
+	if ((det_theta_b[31]==1) and (det_theta_b[30..24]<B"1111111")) then det_theta_c[31..0]=H"ff000000";
+
+			elsif ((det_theta_b[31]==0) and (det_theta_b[30..24]>B"0000000")) then det_theta_c[31..0]=H"00ffffff";
+
+				else det_theta_c[31..0]=det_theta_b[31..0];
+	end if;
+	det_theta_c[31..0].ena=del_turn_plus2;
+	det_theta_c[31..0].clk=clk_sys;
+	
+	det_theta_d[31..26]=det_theta_c[31];
+	det_theta_d[25..0]=det_theta_c[31..6];
+-------Det F error PJ----------
+	det_theta_f_r[31..0]=nco_data_f[31..0];
+	det_theta_f_r[31..0].ena=jmp_plus;
+	det_theta_f_r[31..0].clk=clk_sys;
+	
+	det_theta_1r[31..0]=det_theta_f_r[31..0];
+	det_theta_1r[31..0].ena=jmp_plus;
+	det_theta_1r[31..0].clk=clk_sys;
+	
+	det_theta_2r[31..0]=det_theta_1r[31..0]-det_theta_f_r[31..0];
+	det_theta_2r[31..0].ena=jmp_plus;
+	det_theta_2r[31..0].clk=clk_sys;
+	
+	code_cont.clock=clk_sys;
+	code_cont.cnt_en=plus_bit and !code_cont.cout;
+	code_cont.sclr=jmp_plus;
+	
+	code_cont_ar[8]=code_cont.cout;
+	code_cont_ar[7..0]=code_cont.q[7..0];
+	code_cont_ar[8..0].ena=jmp_plus;
+	code_cont_ar[8..0].clk=clk_sys;
+	
+	code_cont_r[8..0]=code_cont_ar[8..0];
+	code_cont_r[8..0].ena=jmp_plus;
+	code_cont_r[8..0].clk=clk_sys;
+	
+CASE code_cont_r[8..0] IS	
+	when B"000000000" =>  det_f_i_n[31..0]=det_theta_2r[31..0];
+
+	when B"000000001" =>  det_f_i_n[31..0]=det_theta_2r[31..0];
+
+	when B"00000001x" =>  det_f_i_n[31]=det_theta_2r[31];
+						det_f_i_n[30..0]=det_theta_2r[31..1];
+
+	when B"0000001xx" =>  det_f_i_n[31..30]=det_theta_2r[31];
+						det_f_i_n[29..0]=det_theta_2r[31..2];
+
+	when B"000001xxx" =>  det_f_i_n[31..29]=det_theta_2r[31];
+						det_f_i_n[28..0]=det_theta_2r[31..3];
+
+	when B"00001xxxx" =>  det_f_i_n[31..28]=det_theta_2r[31];
+						det_f_i_n[27..0]=det_theta_2r[31..4];
+
+	when B"0001xxxxx" =>  det_f_i_n[31..27]=det_theta_2r[31];
+						det_f_i_n[26..0]=det_theta_2r[31..5];
+
+	when B"001xxxxxx" =>  det_f_i_n[31..26]=det_theta_2r[31];
+						det_f_i_n[25..0]=det_theta_2r[31..6];
+
+	when B"01xxxxxxx" =>  det_f_i_n[31..25]=det_theta_2r[31];
+						det_f_i_n[24..0]=det_theta_2r[31..7];
+
+	when B"1xxxxxxxx" =>  det_f_i_n[31..24]=det_theta_2r[31];
+						det_f_i_n[23..0]=det_theta_2r[31..8];
+end case;
+	
+	f_err_pj_c.clock=clk_sys;
+	f_err_pj_c.cnt_en=jmp_plus;
+
+	f_err_b_n[31..28]=det_f_i_n[31];
+	f_err_b_n[27..0]=det_f_i_n[31..4];
+
+   (f_err_c[31..0],,) = lpm_add_sub(GND, f_err_a[31..0],f_err_b_n[31..0],VCC,,,)
+                           WITH (LPM_WIDTH=32, 
+											LPM_TYPE = "LPM_ADD_SUB",
+                                 LPM_REPRESENTATION="signed");
+	f_err_a[].ena=jmp_plus;
+	f_err_a[].clk=clk_sys;
+	if (f_err_pj_c.cout)==1 then f_err_a[]=GND;
+		else f_err_a[]=f_err_c[];
+	end if;
+
+	f_err[]=f_err_c[];
+	f_err[].clk=clk_sys;
+	f_err[].ena=jmp_plus and f_err_pj_c.cout;
+CASE nco_f_n[29..17] IS	
+	when B"1xxxxxxxxxxxx" =>  det_f_n[31..0]=f_err[31..0];
+
+	when B"01xxxxxxxxxxx" =>  det_f_n[31]=f_err[31];
+									det_f_n[30..0]=f_err[31..1];
+
+	when B"001xxxxxxxxxx" =>  det_f_n[31..30]=f_err[31];
+									det_f_n[29..0]=f_err[31..2];
+
+	when B"0001xxxxxxxxx" =>  det_f_n[31..29]=f_err[31];
+									det_f_n[28..0]=f_err[31..3];
+
+	when B"00001xxxxxxxx" =>  det_f_n[31..28]=f_err[31];
+									det_f_n[27..0]=f_err[31..4];
+
+	when B"000001xxxxxxx" =>  det_f_n[31..27]=f_err[31];
+									det_f_n[26..0]=f_err[31..5];
+
+	when B"0000001xxxxxx" =>  det_f_n[31..26]=f_err[31];
+									det_f_n[25..0]=f_err[31..6];
+
+	when B"00000001xxxxx" =>  det_f_n[31..25]=f_err[31];
+									det_f_n[24..0]=f_err[31..7];
+
+	when B"000000001xxxx" =>  det_f_n[31..24]=f_err[31];
+									det_f_n[23..0]=f_err[31..8];
+
+	when B"0000000001xxx" =>  det_f_n[31..23]=f_err[31];
+									det_f_n[22..0]=f_err[31..9];
+
+	when B"00000000001xx" =>  det_f_n[31..22]=f_err[31];
+									det_f_n[21..0]=f_err[31..10];
+
+	when B"000000000001x" =>  det_f_n[31..21]=f_err[31];
+									det_f_n[20..0]=f_err[31..11];
+
+	when B"0000000000001" =>  det_f_n[31..20]=f_err[31];
+									det_f_n[19..0]=f_err[31..12];
+
+	when others =>  det_f_n[31..19]=f_err[31];
+					det_f_n[18..0]=f_err[31..13];
+
+end case;
+------iir-----------
+
+	det_f_jf[31..30]=det_f[31];			--/2^2
+	det_f_jf[29..0]=det_f[31..2];
+	det_f_jf[].clk=clk_sys;
+	det_f_jf[].clrn=!update_n;
+		
+	det_theta[31..30]=err_ot.q[31];
+	det_theta[29..0]=err_ot.q[31..2];
+	det_f[31..20]=det_f_n[31];
+	det_f[19..0]=det_f_n[31..12];
+	--------------------------
+   mod_mod[2..0]=modem_mod[2..0];
+	
+	if mod_mod[2..0]==B"010" then
+		max_det_m[31..18]=GND;					----1/1024--0.1%
+		max_det_m[17..0]=nco_f_n[31..14];
+	else
+		max_det_m[31..25]=GND;					----1/128--1%
+		max_det_m[24..0]=nco_f_n[31..7];
+	end if;
+
+	det_1_theta[31..28]=err_ot.q[31];
+	det_1_theta[27..0]=err_ot.q[31..4];
+
+   (det_freq_n[31..0],,) = lpm_add_sub(GND,det_freq[31..0],det_f_jf[31..0],VCC,,,)
+                           WITH (LPM_WIDTH=32, 
+											LPM_TYPE = "LPM_ADD_SUB",
+                                LPM_REPRESENTATION="signed");
+
+	det_freq[].ena=del4_jf_plus;
+	det_freq[].clk=clk_sys;
+	det_freq[].clrn=!update_n;
+	
+	if ((det_freq_n[31]==1) and (det_freq_n[31..0]<!max_det_m[31..0])) then det_freq[31..0]=!max_det_m[31..0];
+
+			elsif ((det_freq_n[31]==0) and (det_freq_n[31..0]>max_det_m[31..0])) then det_freq[31..0]=max_det_m[31..0];
+
+				else det_freq[31..0]=det_freq_n[31..0];
+	end if;
+	
+	del1_jf_plus=jmp_plus and f_err_pj_c.cout;
+	del2_jf_plus=del1_jf_plus;
+	del3_jf_plus=del2_jf_plus;
+	del4_jf_plus=del3_jf_plus;
+	del5_jf_plus=del4_jf_plus;
+	del6_jf_plus=del5_jf_plus;
+	del7_jf_plus=del6_jf_plus;
+	del1_jf_plus.clk=clk_sys;
+	del2_jf_plus.clk=clk_sys;
+	del3_jf_plus.clk=clk_sys;
+	del4_jf_plus.clk=clk_sys;
+	del5_jf_plus.clk=clk_sys;
+	del6_jf_plus.clk=clk_sys;
+	del7_jf_plus.clk=clk_sys;
+	
+
+	freq_f[31..0]=add32_3(clk_sys,nco_f_n[31..0],det_freq[31..0],det_f[31..0]);
+	freq[31..0]=add32_2(clk_sys,freq_f[31..0],det_1_theta[31..0]);
+
+------------------
+	pcm_1d=del_pcm_pd;
+	pcm_1d.clk=clk_sys;
+	pcm_1d.ena=plus_bit_n;
+
+	bs=plus_bit_n;
+	bd=pcm_1d;
+
+	
+END;

@@ -1,0 +1,291 @@
+FUNCTION LCELL (in)
+   RETURNS (out);
+FUNCTION lpm_shiftreg (data[LPM_WIDTH-1..0], clock, enable, shiftin, load, sclr, sset, aclr, aset)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION lpm_add_sub (cin, dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], add_sub, clock, aclr, clkn)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_DIRECTION, ONE_INPUT_IS_CONSTANT, LPM_PIPELINE, MAXIMIZE_SPEED)
+   RETURNS (result[LPM_WIDTH-1..0], cout, overflow);
+FUNCTION lpm_abs (data[LPM_WIDTH-1..0])
+   WITH (LPM_WIDTH, ADDERTYPE)
+   RETURNS (result[LPM_WIDTH-1..0], overflow);
+FUNCTION lpm_decode (data[LPM_WIDTH-1..0], enable, clock, aclr)
+   WITH (LPM_WIDTH, LPM_DECODES, LPM_PIPELINE)
+   RETURNS (eq[LPM_DECODES-1..0]);
+FUNCTION lpm_latch (data[LPM_WIDTH-1..0], gate, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE)
+   RETURNS (q[LPM_WIDTH-1..0]);
+FUNCTION acc(data[15..0],clock)
+   RETURNS (result[15..0]);
+FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+FUNCTION lpm_counter (data[LPM_WIDTH-1..0], clock, clk_en, cnt_en, updown, cin, aclr, aset, aconst, aload, sclr, sset, sconst, sload)
+   WITH (LPM_WIDTH, LPM_DIRECTION, LPM_MODULUS, LPM_AVALUE, LPM_SVALUE, CARRY_CNT_EN, LABWIDE_SCLR)
+   RETURNS (q[LPM_WIDTH-1..0], cout, eq[15..0]);
+FUNCTION lpm_compare (dataa[LPM_WIDTH-1..0], datab[LPM_WIDTH-1..0], clock, aclr)
+   WITH (LPM_WIDTH, LPM_REPRESENTATION, LPM_PIPELINE, CHAIN_SIZE, ONE_INPUT_IS_CONSTANT)
+   RETURNS (alb, aeb, agb, ageb, aneb, aleb);
+	
+FUNCTION nco_if_mixer (clk, clken, phi_inc_i[31..0], reset_n)
+	RETURNS (fsin_o[9..0], fcos_o[9..0], out_valid);
+FUNCTION mult_10_12(	clock,dataa_imag[11..0],dataa_real[11..0],datab_imag[9..0],datab_real[9..0])
+	RETURNS (result_imag[21..0],result_real[21..0]);
+
+FUNCTION add32_2in (clock,dataa[31..0],datab[31..0])
+	RETURNS (result[31..0]);
+
+FUNCTION cordic(clk_samp,clk_ena,xi[11..0],yi[11..0],iq_singal)
+	RETURNS (xo[12..0],yo[11..0],zo[11..0],samp_ena,samp_iq_singal);	
+
+--FUNCTION iir_fzb (clk_sys, ena_smp, afc_flag, f_in[11..0], fram_lock)
+--	RETURNS (out_frn[31..0], f_lock);
+	
+FUNCTION iir_fzb_fsk (clk_sys, ena_smp, f_in[11..0], afc_flag)
+	RETURNS (det_f[31..0]);
+
+FUNCTION iir_fsk_c (clk_sys, ena_smp, afc_flag, f_in[11..0], code_f[31..0], fram_lock)
+	RETURNS (out_frn[31..0], f_lock);
+--FUNCTION psk_acc_1new (clk_sys, clk_ena, bpsk_f, qpsk_f, cic_rate[15..0], sym_f[31..0], afc_flag, fram_lock, afc_time[3..0], theta[11..0], test_90h[7..0], test_91h[7..0], test_92h[7..0], test_93h[7..0], test_94h[7..0])
+--	RETURNS (det_f[31..0], code_lock_f);
+FUNCTION filter_acc (clk_sys, rst_s, coef_set, cic3_rate[7..0], cic5_rate[7..0], in_valid, coef_set_in, coef_we, coef_in[15..0], coef_in_clk, i_data[11..0], q_data[11..0])
+	RETURNS (clk_ena, i_out[11..0], q_out[11..0]);
+	
+FUNCTION fsk_acc (clk_sys, clk_ena, f_gain[2..0], theta[11..0])
+	RETURNS (f[11..0]);
+
+FUNCTION jsj_fzb_jt (clk_sys, code_f[31..0], clk_ena, fm_in[11..0], rst_s, fzb_time[3..0])
+	RETURNS (pcm_out,pcm_out_ena);
+	
+FUNCTION ddio_in (datain[11..0],inclock)
+	RETURNS (dataout_h[11..0],dataout_l[11..0]);
+
+SUBDESIGN jsj_ad9361
+(
+	ad_data_clk							:input;
+	rx_frame_p							:input;
+	rst_n									:input;
+	a_data[11..0]						:input;
+--------------------------------
+	cic3_rate[7..0]					:input;
+	cic5_rate[7..0]					:input;
+	f_gain[2..0]						:input;
+	afc_cef[3..0]						:input;
+	fram_lock							:input;
+	dec_mode[3..0]						:input;
+	code_frn[31..0]					:input;
+	if_frn[31..0]						:input;
+	fzb_time[3..0]						:input;
+--------------------------------
+	pcm_ena								:output;
+	pcm_out								:output;
+	gmh_lock								:output;
+	clk_ena_bitsyn						:output;	
+)                      
+VARIABLE
+--	ddio_inout							:ddio_in;
+	buff_a[11..0]						:dffe;
+	buff_b[11..0]						:dffe;
+	buff_a_n[11..0]					:dffe;
+	buff_b_n[11..0]					:dffe;
+	
+	fzb_jt								:jsj_fzb_jt;	
+	nco_a									:nco_if_mixer;
+	a_sin[9..0]							:dffe;
+	a_cos[9..0]							:dffe;	
+	i_a_n[21..0]						:dffe;
+	q_a_n[21..0]						:dffe;
+	if_nco_fre_a[31..0]				:node;
+	det_freq[31..0]					:node;
+	
+	fir_a									:filter_acc;
+	clk_ena								:node;
+	ia_buff[11..0]						:dffe;
+	qa_buff[11..0]						:dffe;
+	i_buff[11..0]						:dffe;
+	q_buff[11..0]						:dffe;
+
+	fsk_flag								:node;
+	fzb_flag								:node;
+	fsk									:fsk_acc;
+	xy_to_r								:cordic;
+	fsk_t_f								:iir_fsk_c;
+	fsk_fzb								:iir_fzb_fsk;
+	
+	theta[11..0]						:node;
+	buf_theta[11..0]					:dffe;
+	ena_theta							:node;
+	det_f[11..0]						:dffe;
+	afc_f									:node;
+
+BEGIN
+---input buffer--	
+--	ddio_inout.datain[11..0]		=a_data[11..0];
+--	ddio_inout.inclock				=ad_data_clk;
+--	
+--	buff_a[11..0]						=ddio_inout.dataout_h[11..0];			
+--	buff_b[11..0]						=ddio_inout.dataout_l[11..0];	
+--	
+--	buff_a[11..0].clk					=ad_data_clk;
+--	buff_b[11..0].clk					=ad_data_clk;
+	
+	buff_a[11..0]						=a_data[11..0];				
+	buff_b[11..0]						=a_data[11..0];	
+	buff_a[11..0].ena					=rx_frame_p;
+	buff_b[11..0].ena					=!rx_frame_p;
+	buff_a[11..0].clk					=ad_data_clk;
+	buff_b[11..0].clk					=ad_data_clk;
+	
+			
+	buff_a_n[11..0]					=buff_a[11..0];
+	buff_b_n[11..0]					=buff_b[11..0];
+	buff_a_n[11..0].clk				=ad_data_clk;
+	buff_b_n[11..0].clk				=ad_data_clk;
+--------------------------------------------
+	afc_f									=afc_cef[0] or afc_cef[1] or afc_cef[2] or afc_cef[3];
+---------DDC--------------------------------		
+	if_nco_fre_a[31..0]				=add32_2in(ad_data_clk,if_frn[31..0],det_freq[31..0]);--add32_2in(ad_data_clk,if_frn[31..0],det_freq[31..0]);
+
+	nco_a.phi_inc_i[31..0]			=if_nco_fre_a[31..0];
+	nco_a.clk							=ad_data_clk;
+	nco_a.reset_n						=rst_n;
+	nco_a.clken							=VCC;	
+	a_sin[9..0]							=nco_a.fsin_o[9..0];
+	a_cos[9..0]							=nco_a.fcos_o[9..0];	
+	a_sin[9..0].clk					=ad_data_clk;
+	a_cos[9..0].clk					=ad_data_clk;
+	
+	(q_a_n[21..0],i_a_n[21..0])	=mult_10_12(ad_data_clk,buff_b_n[11..0],buff_a_n[11..0],a_cos[9..0],a_sin[9..0]);--mult_10_12(ad_data_clk,buff_b[11..0],buff_a[11..0],a_cos[9..0],a_sin[9..0]);
+
+	i_a_n[21..0].clk					=ad_data_clk;
+	q_a_n[21..0].clk					=ad_data_clk;
+--------------------------------------------
+	fir_a.coef_set_in					=GND;--coef_set_in;
+	fir_a.coef_we						=GND;--coef_cs;
+	fir_a.coef_in[15..0]				=GND;--coef_in[15..0];
+	fir_a.coef_in_clk					=GND;--coef_in_clk;
+			
+	fir_a.clk_sys						=ad_data_clk;
+	fir_a.in_valid						=VCC;
+	fir_a.rst_s							=rst_n;
+	fir_a.cic3_rate[7..0]			=cic3_rate[7..0];
+	fir_a.cic5_rate[7..0]			=cic5_rate[7..0];
+	fir_a.coef_set						=fram_lock;
+	fir_a.i_data[11..0]				=i_a_n[20..9];
+	fir_a.q_data[11..0]				=q_a_n[20..9];
+	
+	clk_ena								=fir_a.clk_ena;
+	
+	ia_buff[11..0]						=fir_a.i_out[11..0];
+	qa_buff[11..0]						=fir_a.q_out[11..0];
+	ia_buff[].ena						=clk_ena;
+	ia_buff[].clk						=ad_data_clk;
+	qa_buff[].ena						=clk_ena;
+	qa_buff[].clk						=ad_data_clk;
+--------------------------------------------
+--------------------------------------------	
+	i_buff[11..0]						=ia_buff[11..0];
+	q_buff[11..0]						=qa_buff[11..0];
+	
+	i_buff[].ena						=clk_ena;
+	i_buff[].clk						=ad_data_clk;
+	q_buff[].ena						=clk_ena;
+	q_buff[].clk						=ad_data_clk;	
+-------------------------------
+	if dec_mode[3..0]==B"0000" then 		--fsk
+		fsk_flag							=VCC;
+		fzb_flag							=GND;
+	elsif dec_mode[3..0]==B"1000" then 	--fzb解调
+		fsk_flag							=VCC;
+		fzb_flag							=VCC;
+	else
+		fsk_flag							=GND;
+		fzb_flag							=GND;
+	end if;
+--------------------------------------------
+--------------------------------------------
+	xy_to_r.xi[11..0]					=i_buff[11..0];	
+	xy_to_r.yi[11..0]					=q_buff[11..0];
+	xy_to_r.clk_ena					=clk_ena;
+	xy_to_r.iq_singal					=GND;
+	xy_to_r.clk_samp					=ad_data_clk;
+	theta[11..0]						=xy_to_r.zo[11..0];
+	ena_theta							=xy_to_r.samp_ena;
+			
+	buf_theta[]							=theta[];
+	buf_theta[].ena					=ena_theta;
+	buf_theta[].clk					=ad_data_clk;
+			
+	det_f[11..0]						=theta[11..0]-buf_theta[11..0];
+	det_f[].ena							=ena_theta;
+	det_f[].clk							=ad_data_clk;
+	
+	fsk_t_f.clk_sys					=ad_data_clk;
+	fsk_t_f.ena_smp					=ena_theta;
+	fsk_t_f.afc_flag					=afc_f;
+	fsk_t_f.fram_lock					=fram_lock;
+	fsk_t_f.f_in[11..0]				=det_f[11..0];
+	fsk_t_f.code_f[31..0]			=code_frn[31..0];	
+	
+	fsk.clk_sys							=ad_data_clk;
+	fsk.clk_ena							=ena_theta;
+	fsk.f_gain[2..0]					=f_gain[2..0];
+	fsk.theta[11..0]					=theta[11..0];
+--==========================jsj_fzb_jt====================================
+	fzb_jt.clk_sys						=ad_data_clk;
+	fzb_jt.rst_s						=rst_n;
+	fzb_jt.fm_in[11..0]				=fsk.f[11..0];
+	fzb_jt.code_f[31..0]				=code_frn[31..0];
+	fzb_jt.clk_ena						=ena_theta;
+	fzb_jt.fzb_time[3..0]			=fzb_time[3..0];
+	
+--	fsk_fzb.clk_sys					=ad_data_clk;
+--	fsk_fzb.ena_smp					=ena_theta;
+--	fsk_fzb.afc_flag					=afc_f;
+--	fsk_fzb.fram_lock					=fram_lock;
+--	fsk_fzb.f_in[11..0]				=fsk.f[11..0];
+	
+	fsk_fzb.clk_sys					=ad_data_clk;
+	fsk_fzb.ena_smp					=ena_theta;
+	fsk_fzb.afc_flag					=afc_f;
+	fsk_fzb.f_in[11..0]				=fsk.f[11..0];
+--========================================================================	
+	if fzb_flag then 
+		clk_ena_bitsyn					=vcc;--fzb_jt.pcm_out_ena;	
+	else 
+		clk_ena_bitsyn					=ena_theta;	
+	end if;
+	
+	if fsk_flag and !fzb_flag then 
+		pcm_out							=fsk.f[11];
+		det_freq[31..0]				=fsk_t_f.out_frn[31..0];
+		pcm_ena							=ena_theta;	
+		gmh_lock							=fsk_t_f.f_lock;	
+	elsif fsk_flag and fzb_flag then 
+		pcm_out							=fzb_jt.pcm_out;
+--		det_freq[31..0]				=fsk_fzb.out_frn[31..0];
+		det_freq[31..0]				=fsk_fzb.det_f[31..0];
+		pcm_ena							=ena_theta;	
+--		gmh_lock							=fsk_fzb.f_lock;	
+	else
+		pcm_out							=vcc;
+		pcm_ena							=GND;
+		det_freq[31..0]				=GND;
+	end if;
+
+END;	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+Fitter Status : Successful - Tue Mar 23 16:34:17 2021
+Quartus II 64-Bit Version : 14.1.0 Build 186 12/03/2014 SJ Full Version
+Revision Name : BFMPrj
+Top-level Entity Name : d19013_sec_ctrl_top
+Family : Cyclone V
+Device : 5CEFA9F23I7
+Timing Models : Final
+Logic utilization (in ALMs) : 10,551 / 113,560 ( 9 % )
+Total registers : 19899
+Total pins : 81 / 224 ( 36 % )
+Total virtual pins : 0
+Total block memory bits : 1,287,094 / 12,492,800 ( 10 % )
+Total DSP Blocks : 25 / 342 ( 7 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 3 / 8 ( 38 % )
+Total DLLs : 0 / 4 ( 0 % )

@@ -1,0 +1,44 @@
+FUNCTION LCELL (in)
+   RETURNS (out);
+FUNCTION lpm_dff (data[LPM_WIDTH-1..0], clock, enable, shiftin, shiften, sclr, sset, sconst, aclr, aset, aconst)
+   WITH (LPM_WIDTH, LPM_AVALUE, LPM_SVALUE)
+   RETURNS (q[LPM_WIDTH-1..0], shiftout);
+
+	
+SUBDESIGN fsk_acc
+(
+	clk_sys						:INPUT;
+	clk_ena						:input;
+	f_gain[2..0]				:input;
+	theta[11..0]				:input;
+	f[11..0]						:output;
+)
+VARIABLE
+	theta_b[7..0][11..0]		:dffe;
+	old_buff[11..0]			:node;
+	det_f_d[11..0]				:dffe;
+BEGIN
+	theta_b[0][11..0]			=theta[11..0];
+	FOR i IN 0 TO 6 GENERATE
+		theta_b[i+1][11..0]	=theta_b[i][11..0];
+	END GENERATE;
+		
+	theta_b[][].ena			=clk_ena;
+	theta_b[][].clk			=clk_sys;
+	CASE f_gain[2..0] IS	
+		WHEN 0 => old_buff[]	=theta_b[0][];
+		WHEN 1 => old_buff[]	=theta_b[1][];
+		WHEN 2 => old_buff[]	=theta_b[2][];
+		WHEN 3 => old_buff[]	=theta_b[3][];
+		WHEN 4 => old_buff[]	=theta_b[4][];
+		WHEN 5 => old_buff[]	=theta_b[5][];
+		WHEN 6 => old_buff[]	=theta_b[6][];
+		WHEN 7 => old_buff[]	=theta_b[7][];
+	END CASE;
+	det_f_d[11..0]				=theta[11..0]-old_buff[11..0];
+	det_f_d[11..0].clk		=clk_sys;
+	det_f_d[11..0].ena		=clk_ena;
+	
+	f[11..0]						=det_f_d[11..0];
+	
+END;	
